@@ -33,11 +33,6 @@ vim.opt.expandtab = true
 vim.opt.shiftwidth = tabsize
 vim.opt.tabstop = tabsize
 
--- set by Lazy
--- space as leader
---vim.g.mapleader = ' '
---vim.g.maplocalleader = ' '
-
 -- smarter search
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
@@ -86,7 +81,7 @@ vim.opt.cmdheight = 1
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
---tabline
+-- tabline
 vim.opt.showtabline = 2
 
 -- don't continue comments automagically
