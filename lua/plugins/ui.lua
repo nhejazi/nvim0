@@ -7,16 +7,10 @@
 return {
 
   {
-    "akinsho/bufferline.nvim",
-    version = "*",
-    dependencies = "nvim-tree/nvim-web-devicons",
-  },
-
-  {
     "alexghergh/nvim-tmux-navigation",
     config = function()
       -- from https://github.com/alexghergh/nvim-tmux-navigation
-      require("nvim-tmux-navigation").setup({
+      require("nvim-tmux-navigation").setup {
         disable_when_zoomed = true, -- defaults to false
         keybindings = {
           left = "<C-h>",
@@ -26,7 +20,24 @@ return {
           last_active = "<C-\\>",
           next = "<C-Space>",
         },
-      })
+      }
+    end,
+  },
+
+  {
+    "akinsho/bufferline.nvim",
+    version = "*",
+    dependencies = "nvim-tree/nvim-web-devicons",
+  },
+
+  -- or you can return new options to override all the defaults
+  {
+    "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
+    opts = function()
+      return {
+        --[[add your custom lualine config here]]
+      }
     end,
   },
 }
