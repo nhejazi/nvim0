@@ -6,14 +6,6 @@
 -- * override the configuration of LazyVim plugins
 return {
 
-  -- change trouble config
-  {
-    'folke/trouble.nvim',
-    -- opts will be merged with the parent spec
-    opts = { use_diagnostic_signs = true },
-    enabled = false,
-  },
-
   -- override nvim-cmp to add cmp-xxx sources
   {
     'hrsh7th/nvim-cmp',
@@ -24,6 +16,7 @@ return {
       'kdheepak/cmp-latex-symbols',
       'jmbuhr/cmp-pandoc-references',
       'L3MON4D3/LuaSnip',
+      'saadparwaiz1/cmp_luasnip',
       'jmbuhr/otter.nvim',
     },
     ---@param opts cmp.ConfigSchema
@@ -114,6 +107,7 @@ return {
         'shellcheck',
         'shfmt',
         'flake8',
+        'black',
       },
     },
   },
