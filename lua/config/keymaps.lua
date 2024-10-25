@@ -58,7 +58,7 @@ nmap('Q', '<Nop>')
 --- If an R terminal has been opend, this is in r_mode
 --- and will handle python code via reticulate when sent
 --- from a python chunk.
---- TODO: incorpoarate this into quarto-nvim plugin
+--- TODO: incorporate this into quarto-nvim plugin
 --- such that QuartoRun functions get the same capabilities
 --- TODO: figure out bracketed paste for reticulate python repl.
 local function send_cell()
@@ -272,6 +272,10 @@ local function new_terminal_ipython()
   new_terminal 'ipython --no-confirm-exit'
 end
 
+local function new_terminal_radian()
+  new_terminal 'radian --no-save'
+end
+
 local function new_terminal_julia()
   new_terminal 'julia'
 end
@@ -308,11 +312,12 @@ wk.add({
   {
     { "<leader><cr>", send_cell, desc = "run code cell" },
     { "<leader>c", group = "[c]ode / [c]ell / [c]hunk" },
-    { "<leader>ci", new_terminal_ipython, desc = "new [i]python terminal" },
-    { "<leader>cj", new_terminal_julia, desc = "new [j]ulia terminal" },
+    { "<leader>cip", new_terminal_ipython, desc = "new [i]python terminal" },
+    { "<leader>cjl", new_terminal_julia, desc = "new [j]ulia terminal" },
     { "<leader>cn", new_terminal_shell, desc = "[n]ew terminal with shell" },
-    { "<leader>cp", new_terminal_python, desc = "new [p]ython terminal" },
+    { "<leader>cpy", new_terminal_python, desc = "new [p]ython terminal" },
     { "<leader>cr", new_terminal_r, desc = "new [R] terminal" },
+    { "<leader>cra", new_terminal_radian, desc = "new [Ra]dian terminal" },
     { "<leader>d", group = "[d]ebug" },
     { "<leader>dt", group = "[t]est" },
     { "<leader>e", group = "[e]dit" },
