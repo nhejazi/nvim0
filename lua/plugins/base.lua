@@ -17,10 +17,30 @@ return {
       "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip",
       "jmbuhr/otter.nvim",
+      {"windwp/nvim-autopairs", opts = { fast_wrap = {}, },
+      },
     },
     ---@param opts cmp.ConfigSchema
     opts = function(_, opts)
       local cmp = require "cmp"
+      local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+
+      -- from https://github.com/dpetka2001/dotfiles/blob/10d02517395783adb31bffab5447437b8f908e15/dot_config/nvim/lua/plugins/coding.lua#L47-L62
+      local types = require("cmp.types")
+      -- Function to sort LSP snippets, so that they appear at the end of LSP
+      -- suggestions
+      local function deprioritize_snippet(entry1, entry2)
+        if entry1:get_kind() == types.lsp.CompletionItemKind.Snippet then
+          return false
+        end
+        if entry2:get_kind() == types.lsp.CompletionItemKind.Snippet then
+          return true
+        end
+      end
+
+      -- Insert `deprioritize_snippet` first in the `comparators` table, so
+      -- that it has priority over the other default comparators
+      table.insert(opts.sorting.comparators, 1, deprioritize_snippet)
 
       opts.mapping = vim.tbl_extend("force", opts.mapping, {
         ["<Tab>"] = cmp.mapping(function(fallback)
