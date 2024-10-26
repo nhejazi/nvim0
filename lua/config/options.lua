@@ -81,7 +81,6 @@ vim.opt.formatoptions:remove "o"
 -- scroll before end of window
 vim.opt.scrolloff = 5
 
-
 -- diagnostics
 vim.diagnostic.config {
   virtual_text = true,
