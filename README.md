@@ -2,10 +2,11 @@
 
 0/"Zero" is an experimental configuration for [Neovim](https://neovim.io/) that
 emphasizes support for scientific writing, statistical computing, and data
-analysis using literate programming/computing notebooks.
+analysis using literate programming/computing notebooks. First, though, an ode
+to Vim:
 
-> An ode to Vim: ["Vim is a masterpiece, the gleaming precise machining tool
-> from which so much of modernity was
+> ["Vim is a masterpiece, the gleaming precise machining tool from which so
+> much of modernity was
 > crafted."](https://x.com/colmmacc/status/1687861827223556096)
 
 ## Setup
