@@ -5,6 +5,8 @@
 -- * disable/enabled LazyVim plugins
 -- * override the configuration of LazyVim plugins
 return {
+
+  --[[
   -- add tsserver and setup with typescript.nvim instead of lspconfig
   {
     "neovim/nvim-lspconfig",
@@ -45,8 +47,8 @@ return {
       },
     },
   },
+  --]]
 
-  --[[
   {
     -- for lsp features in code cells / embedded code
     "jmbuhr/otter.nvim",
@@ -309,6 +311,5 @@ return {
 
     end,
   },
-  --]]
 
 }

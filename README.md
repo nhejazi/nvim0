@@ -1,4 +1,4 @@
-# `nvimsci` experimental neovim configuration for scientific computing
+# experimental neovim configuration
 
 An experimental configuration for Neovim emphasizing support for scientific
 writing, computing and data analysis based on literate computing principles.

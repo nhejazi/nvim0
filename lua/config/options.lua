@@ -1,41 +1,32 @@
--- global options
-
--- proper colors
-vim.opt.termguicolors = true
-
--- show insert mode in terminal buffers
-vim.api.nvim_set_hl(0, 'TermCursor', { fg = '#A6E3A1', bg = '#A6E3A1' })
-
--- disable fill chars (the ~ after the buffer)
-vim.o.fillchars = 'eob: '
+-- Options are automatically loaded before lazy.nvim startup
+-- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
+-- Add any additional options here
 
 -- more opinionated
-vim.opt.number = true -- show linenumbers
+--vim.opt.number = true -- show linenumbers
 vim.opt.relativenumber = false -- hide relative linenumbers
-vim.opt.signcolumn = 'number'
+vim.opt.signcolumn = "number"
 vim.opt.mousefocus = true
-vim.opt.clipboard:append 'unnamedplus' -- use system clipboard
 vim.opt.wildmenu = true
-vim.opt.wildmode = 'longest'
+vim.opt.wildmode = "longest"
 
 vim.opt.timeoutlen = 400 -- until which-key pops up
 vim.opt.updatetime = 250 -- for autocommands and hovers
 
--- don't ask about existing swap files
-vim.opt.shortmess:append 'A'
+-- (don't == 0) replace certain elements with prettier ones
+vim.opt.conceallevel = 0
 
--- mode is already in statusline
-vim.opt.showmode = false
+-- don't ask about existing swap files
+vim.opt.shortmess:append("A")
 
 -- use less indentation
 local tabsize = 2
-vim.opt.expandtab = true
 vim.opt.shiftwidth = tabsize
 vim.opt.tabstop = tabsize
 
 -- smarter search
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
+--vim.opt.ignorecase = true
+--vim.opt.smartcase = true
 
 -- indent
 vim.opt.smartindent = true
@@ -45,19 +36,16 @@ vim.opt.breakindent = true
 --  See :help 'list'
 --  and :help 'listchars'
 vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 -- consistent number column
-vim.opt.signcolumn = 'yes:1'
+vim.opt.signcolumn = "yes:1"
 
 -- how to show autocomplete menu
-vim.opt.completeopt = 'menuone,noinsert'
+vim.opt.completeopt = "menuone,noinsert"
 
 -- set marker for 80 columns
-vim.opt.colorcolumn = '80'
-
--- global statusline
-vim.opt.laststatus = 3
+vim.opt.colorcolumn = "80"
 
 vim.cmd [[
 let g:currentmode={
@@ -86,15 +74,13 @@ vim.opt.showtabline = 2
 
 -- don't continue comments automagically
 -- https://neovim.io/doc/user/options.html#'formatoptions'
-vim.opt.formatoptions:remove 'c'
-vim.opt.formatoptions:remove 'r'
-vim.opt.formatoptions:remove 'o'
+vim.opt.formatoptions:remove "c"
+vim.opt.formatoptions:remove "r"
+vim.opt.formatoptions:remove "o"
 
 -- scroll before end of window
 vim.opt.scrolloff = 5
 
--- (don't == 0) replace certain elements with prettier ones
-vim.opt.conceallevel = 0
 
 -- diagnostics
 vim.diagnostic.config {
@@ -106,10 +92,10 @@ vim.diagnostic.config {
 -- add new filetypes
 --vim.filetype.add {
 --extension = {
---ojs = 'javascript',
+--ojs = "javascript",
 --},
 --}
 
 -- additional builtin vim packages
 -- filter quickfix list with Cfilter
-vim.cmd.packadd 'cfilter'
+vim.cmd.packadd "cfilter"
