@@ -12,7 +12,7 @@ writing, computing and data analysis based on literate computing principles.
 Clone this repo into `~/.config/nvim/`:
 
 ```bash
-git clone https://github.com/nhejazi/nvimsci.git ~/.config/nvim
+git clone https://github.com/nhejazi/nvimx.git ~/.config/nvim
 ```
 
 ## Sources
