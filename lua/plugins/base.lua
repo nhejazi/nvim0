@@ -101,7 +101,7 @@ return {
   -- disable trouble
   {
     'folke/trouble.nvim',
-    enabled = false,
+    enabled = true,
   },
 
   -- add any tools you want to have installed below

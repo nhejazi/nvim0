@@ -6,35 +6,37 @@
 -- * override the configuration of LazyVim plugins
 return {
 
+  -- TODO: fix integration in ~/.dotfiles/tmux.conf
   {
-    "alexghergh/nvim-tmux-navigation",
+    'alexghergh/nvim-tmux-navigation',
     config = function()
       -- from https://github.com/alexghergh/nvim-tmux-navigation
-      require("nvim-tmux-navigation").setup {
+      require('nvim-tmux-navigation').setup {
         disable_when_zoomed = true, -- defaults to false
         keybindings = {
-          left = "<C-h>",
-          down = "<C-j>",
-          up = "<C-k>",
-          right = "<C-l>",
-          last_active = "<C-\\>",
-          next = "<C-Space>",
+          left = '<C-h>',
+          down = '<C-j>',
+          up = '<C-k>',
+          right = '<C-l>',
+          last_active = '<C-\\>',
+          next = '<C-Space>',
         },
       }
     end,
   },
 
+  -- TODO: fix colorscheme integration
   {
-    "akinsho/bufferline.nvim",
+    'akinsho/bufferline.nvim',
     enabled = true,
-    version = "*",
-    dependencies = "nvim-tree/nvim-web-devicons",
+    version = '*',
+    dependencies = 'nvim-tree/nvim-web-devicons',
   },
 
   -- or you can return new options to override all the defaults
   {
-    "nvim-lualine/lualine.nvim",
-    event = "VeryLazy",
+    'nvim-lualine/lualine.nvim',
+    event = 'VeryLazy',
     opts = function()
       return {
         --[[add your custom lualine config here]]
@@ -44,7 +46,7 @@ return {
 
   -- change some telescope options and a keymap to browse plugin files
   {
-    "nvim-telescope/telescope.nvim",
+    'nvim-telescope/telescope.nvim',
     keys = {
       -- add a keymap to browse plugin files
       -- stylua: ignore
@@ -61,15 +63,14 @@ return {
     -- change some options
     opts = {
       defaults = {
-        layout_strategy = "horizontal",
-        layout_config = { prompt_position = "top" },
-        sorting_strategy = "ascending",
+        layout_strategy = 'horizontal',
+        layout_config = { prompt_position = 'top' },
+        sorting_strategy = 'ascending',
         winblend = 0,
       },
     },
   },
 
   -- use mini.starter instead of alpha
-  { import = "lazyvim.plugins.extras.ui.mini-starter" },
-
+  { import = 'lazyvim.plugins.extras.ui.mini-starter' },
 }
