@@ -20,7 +20,7 @@ vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
 vim.api.nvim_create_autocmd({ "TermOpen" }, {
   pattern = { "*" },
   callback = function(_)
-    vim.cmd.setlocal "nonumber"
+    vim.cmd.setlocal "nonumber" "norelativenumber"
     vim.wo.signcolumn = "no"
     set_terminal_keymaps()
   end,
