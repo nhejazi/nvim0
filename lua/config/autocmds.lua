@@ -24,7 +24,7 @@ vim.api.nvim_create_autocmd({ "TermOpen" }, {
     vim.wo.signcolumn = "no"
     -- set size of terminal
     if vim.opt.buftype:get() == "terminal" then
-      vim.cmd ":vert resize 72"
+      vim.cmd ":vert resize 70"
     end
     set_terminal_keymaps()
   end,
@@ -33,6 +33,9 @@ vim.api.nvim_create_autocmd({ "TermOpen" }, {
 vim.api.nvim_create_autocmd({ "BufEnter", "TermEnter" }, {
   pattern = { "*" },
   callback = function()
-    vim.cmd ":startinsert"
+    -- set size of terminal
+    if vim.opt.buftype:get() == "terminal" then
+      vim.cmd ":startinsert"
+    end
   end,
 })

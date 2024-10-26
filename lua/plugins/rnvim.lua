@@ -32,7 +32,7 @@ return {
         R_cmd = "R",
         R_args = {"--quiet", "--no-save"},
         min_editor_width = 81,
-        rconsole_width = 72,
+        rconsole_width = 70,
         bracketed_paste = true,
         disable_cmds = {
           "RClearConsole",

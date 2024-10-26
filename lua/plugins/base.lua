@@ -5,26 +5,25 @@
 -- * disable/enabled LazyVim plugins
 -- * override the configuration of LazyVim plugins
 return {
-
   -- override nvim-cmp to add cmp-xxx sources
   {
-    'hrsh7th/nvim-cmp',
+    "hrsh7th/nvim-cmp",
     dependencies = {
-      'hrsh7th/cmp-calc',
-      'hrsh7th/cmp-emoji',
-      'ray-x/cmp-treesitter',
-      'kdheepak/cmp-latex-symbols',
-      'jmbuhr/cmp-pandoc-references',
-      'L3MON4D3/LuaSnip',
-      'saadparwaiz1/cmp_luasnip',
-      'jmbuhr/otter.nvim',
+      "hrsh7th/cmp-calc",
+      "hrsh7th/cmp-emoji",
+      "ray-x/cmp-treesitter",
+      "kdheepak/cmp-latex-symbols",
+      "jmbuhr/cmp-pandoc-references",
+      "L3MON4D3/LuaSnip",
+      "saadparwaiz1/cmp_luasnip",
+      "jmbuhr/otter.nvim",
     },
     ---@param opts cmp.ConfigSchema
     opts = function(_, opts)
-      local cmp = require 'cmp'
+      local cmp = require "cmp"
 
-      opts.mapping = vim.tbl_extend('force', opts.mapping, {
-        ['<Tab>'] = cmp.mapping(function(fallback)
+      opts.mapping = vim.tbl_extend("force", opts.mapping, {
+        ["<Tab>"] = cmp.mapping(function(fallback)
           -- snippet to confirm with tab
           -- see https://github.com/LazyVim/LazyVim/discussions/250
           -- (note: if no entry is selected, confirm first item)
@@ -38,34 +37,34 @@ return {
           else
             fallback()
           end
-        end, { 'i', 's', 'c' }),
-        ['<CR>'] = cmp.mapping(function(fallback)
+        end, { "i", "s", "c" }),
+        ["<CR>"] = cmp.mapping(function(fallback)
           cmp.abort()
           fallback()
-        end, { 'i', 's', 'c' }),
+        end, { "i", "s", "c" }),
       })
     end,
   },
 
   -- GitHub copilot
   {
-    'zbirenbaum/copilot.lua',
+    "zbirenbaum/copilot.lua",
     enabled = false,
     config = function()
-      require('copilot').setup {
+      require("copilot").setup {
         panel = {
           enabled = true,
           auto_trigger = true,
           auto_refresh = true,
           keymap = {
-            jump_prev = '[[',
-            jump_next = ']]',
-            accept = '<CR>',
-            refresh = 'gr',
-            open = '<M-CR>',
+            jump_prev = "[[",
+            jump_next = "]]",
+            accept = "<CR>",
+            refresh = "gr",
+            open = "<M-CR>",
           },
           layout = {
-            position = 'bottom', -- | top | left | right
+            position = "bottom", -- | top | left | right
             ratio = 0.4,
           },
         },
@@ -75,12 +74,12 @@ return {
           hide_during_completion = true,
           debounce = 75,
           keymap = {
-            accept = '<M-l>',
+            accept = "<M-l>",
             accept_word = false,
             accept_line = false,
-            next = '<M-]>',
-            prev = '<M-[>',
-            dismiss = '<C-]>',
+            next = "<M-]>",
+            prev = "<M-[>",
+            dismiss = "<C-]>",
           },
         },
         filetypes = {
@@ -92,29 +91,32 @@ return {
           hgcommit = false,
           svn = false,
           cvs = false,
-          ['.'] = false,
+          ["."] = false,
         },
       }
     end,
   },
 
-  -- disable trouble
-  {
-    'folke/trouble.nvim',
-    enabled = true,
-  },
-
   -- add any tools you want to have installed below
   {
-    'williamboman/mason.nvim',
+    "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
-        'stylua',
-        'shellcheck',
-        'shfmt',
-        'flake8',
-        'black',
+        "stylua",
+        "shellcheck",
+        "shfmt",
+        "flake8",
+        "black",
       },
     },
   },
+
+  -- TODO: consider disabling
+  {
+    "folke/trouble.nvim",
+    enabled = true,
+  },
+
+  -- use mini.starter instead of alpha
+  { import = "lazyvim.plugins.extras.ui.mini-starter" },
 }
