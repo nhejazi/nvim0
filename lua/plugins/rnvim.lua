@@ -36,12 +36,12 @@ return {
             )
           end,
         },
-        --R_app = "radian",
+        -- R_app = "radian",
         R_cmd = "R",
         R_args = { "--quiet", "--no-save" },
         min_editor_width = 81,
         rconsole_width = 70,
-        bracketed_paste = true,
+        -- bracketed_paste = true,
         disable_cmds = {
           "RClearConsole",
           "RCustomStart",
