@@ -17,16 +17,14 @@ return {
       "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip",
       "jmbuhr/otter.nvim",
-      {"windwp/nvim-autopairs", opts = { fast_wrap = {}, },
-      },
+      { "windwp/nvim-autopairs", opts = { fast_wrap = {} } },
     },
     ---@param opts cmp.ConfigSchema
     opts = function(_, opts)
       local cmp = require "cmp"
-      local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
       -- from https://github.com/dpetka2001/dotfiles/blob/10d02517395783adb31bffab5447437b8f908e15/dot_config/nvim/lua/plugins/coding.lua#L47-L62
-      local types = require("cmp.types")
+      local types = require "cmp.types"
       -- Function to sort LSP snippets, so that they appear at the end of LSP
       -- suggestions
       local function deprioritize_snippet(entry1, entry2)
@@ -65,78 +63,4 @@ return {
       })
     end,
   },
-
-  -- GitHub copilot
-  {
-    "zbirenbaum/copilot.lua",
-    enabled = false,
-    config = function()
-      require("copilot").setup {
-        panel = {
-          enabled = true,
-          auto_trigger = true,
-          auto_refresh = true,
-          keymap = {
-            jump_prev = "[[",
-            jump_next = "]]",
-            accept = "<CR>",
-            refresh = "gr",
-            open = "<M-CR>",
-          },
-          layout = {
-            position = "bottom", -- | top | left | right
-            ratio = 0.4,
-          },
-        },
-        suggestion = {
-          enabled = true,
-          auto_trigger = true,
-          hide_during_completion = true,
-          debounce = 75,
-          keymap = {
-            accept = "<M-l>",
-            accept_word = false,
-            accept_line = false,
-            next = "<M-]>",
-            prev = "<M-[>",
-            dismiss = "<C-]>",
-          },
-        },
-        filetypes = {
-          yaml = false,
-          markdown = false,
-          help = false,
-          gitcommit = false,
-          gitrebase = false,
-          hgcommit = false,
-          svn = false,
-          cvs = false,
-          ["."] = false,
-        },
-      }
-    end,
-  },
-
-  -- add any tools you want to have installed below
-  {
-    "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "stylua",
-        "shellcheck",
-        "shfmt",
-        "flake8",
-        "black",
-      },
-    },
-  },
-
-  -- TODO: consider disabling
-  {
-    "folke/trouble.nvim",
-    enabled = true,
-  },
-
-  -- use mini.starter instead of alpha
-  { import = "lazyvim.plugins.extras.ui.mini-starter" },
 }
