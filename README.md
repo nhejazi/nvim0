@@ -1,6 +1,6 @@
 # `nvim0`: an experimental neovim configuration
 
-0/"Zero" is an experimental configuration for [Neovim](https://neovim.io/) that
+0/Zero is an experimental configuration for [Neovim](https://neovim.io/) that
 emphasizes support for scientific writing, statistical computing, and data
 analysis using literate programming/computing notebooks. First, though, an ode
 to Vim:
