@@ -5,7 +5,6 @@
 -- * disable/enabled LazyVim plugins
 -- * override the configuration of LazyVim plugins
 return {
-
   --[[
   -- add tsserver and setup with typescript.nvim instead of lspconfig
   {
@@ -50,23 +49,6 @@ return {
   --]]
 
   {
-    -- for lsp features in code cells / embedded code
-    "jmbuhr/otter.nvim",
-    dev = false,
-    dependencies = {
-      {
-        "neovim/nvim-lspconfig",
-        "nvim-treesitter/nvim-treesitter",
-      },
-    },
-    opts = {
-      verbose = {
-        no_code_found = false,
-      },
-    },
-  },
-
-  {
     "neovim/nvim-lspconfig",
     dependencies = {
       { "williamboman/mason.nvim" },
@@ -74,14 +56,14 @@ return {
       { "WhoIsSethDaniel/mason-tool-installer.nvim" },
     },
     config = function()
-      local lspconfig = require "lspconfig"
-      local util = require "lspconfig.util"
+      local lspconfig = require("lspconfig")
+      local util = require("lspconfig.util")
 
       require("mason").setup()
-      require("mason-lspconfig").setup {
+      require("mason-lspconfig").setup({
         automatic_installation = true,
-      }
-      require("mason-tool-installer").setup {
+      })
+      require("mason-tool-installer").setup({
         ensure_installed = {
           "black",
           "stylua",
@@ -90,7 +72,7 @@ return {
           "tree-sitter-cli",
           "jupytext",
         },
-      }
+      })
 
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup(
@@ -129,10 +111,10 @@ return {
           map("gI", vim.lsp.buf.implementation, "[g]o to [I]mplementation")
           map("gr", vim.lsp.buf.references, "[g]o to [r]eferences")
           map("[d", function()
-            vim.diagnostic.jump { count = 1 }
+            vim.diagnostic.jump({ count = 1 })
           end, "previous [d]iagnostic ")
           map("]d", function()
-            vim.diagnostic.jump { count = -1 }
+            vim.diagnostic.jump({ count = -1 })
           end, "next [d]iagnostic ")
           map("<leader>ll", vim.lsp.codelens.run, "[l]ens run")
           map("<leader>lR", vim.lsp.buf.rename, "[l]sp [R]ename")
@@ -163,13 +145,13 @@ return {
       -- $home/.config/marksman/config.toml :
       -- [core]
       -- markdown.file_extensions = ["md", "markdown", "qmd"]
-      lspconfig.marksman.setup {
+      lspconfig.marksman.setup({
         capabilities = capabilities,
         filetypes = { "markdown", "quarto" },
         root_dir = util.root_pattern(".git", ".marksman.toml", "_quarto.yml"),
-      }
+      })
 
-      lspconfig.r_language_server.setup {
+      lspconfig.r_language_server.setup({
         capabilities = capabilities,
         flags = lsp_flags,
         settings = {
@@ -179,24 +161,24 @@ return {
             },
           },
         },
-      }
+      })
 
-      lspconfig.cssls.setup {
+      lspconfig.cssls.setup({
         capabilities = capabilities,
         flags = lsp_flags,
-      }
+      })
 
-      lspconfig.html.setup {
+      lspconfig.html.setup({
         capabilities = capabilities,
         flags = lsp_flags,
-      }
+      })
 
-      lspconfig.emmet_language_server.setup {
+      lspconfig.emmet_language_server.setup({
         capabilities = capabilities,
         flags = lsp_flags,
-      }
+      })
 
-      lspconfig.yamlls.setup {
+      lspconfig.yamlls.setup({
         capabilities = capabilities,
         flags = lsp_flags,
         settings = {
@@ -207,23 +189,23 @@ return {
             },
           },
         },
-      }
+      })
 
-      lspconfig.jsonls.setup {
+      lspconfig.jsonls.setup({
         capabilities = capabilities,
         flags = lsp_flags,
-      }
+      })
 
-      lspconfig.dotls.setup {
+      lspconfig.dotls.setup({
         capabilities = capabilities,
         flags = lsp_flags,
-      }
+      })
 
-      lspconfig.ts_ls.setup {
+      lspconfig.ts_ls.setup({
         capabilities = capabilities,
         flags = lsp_flags,
         filetypes = { "js", "javascript", "typescript", "ojs" },
-      }
+      })
 
       local function get_quarto_resource_path()
         local function strsplit(s, delimiter)
@@ -235,7 +217,7 @@ return {
         end
 
         local f = assert(io.popen("quarto --paths", "r"))
-        local s = assert(f:read "*a")
+        local s = assert(f:read("*a"))
         f:close()
         return strsplit(s, "\n")[2]
       end
@@ -244,7 +226,7 @@ return {
       local lua_plugin_paths = {}
       local resource_path = get_quarto_resource_path()
       if resource_path == nil then
-        vim.notify_once "quarto not found, lua library files not loaded"
+        vim.notify_once("quarto not found, lua library files not loaded")
       else
         table.insert(lua_library_files, resource_path .. "/lua-types")
         table.insert(
@@ -253,7 +235,7 @@ return {
         )
       end
 
-      lspconfig.lua_ls.setup {
+      lspconfig.lua_ls.setup({
         capabilities = capabilities,
         flags = lsp_flags,
         settings = {
@@ -280,25 +262,25 @@ return {
             },
           },
         },
-      }
+      })
 
-      lspconfig.vimls.setup {
+      lspconfig.vimls.setup({
         capabilities = capabilities,
         flags = lsp_flags,
-      }
+      })
 
-      lspconfig.julials.setup {
+      lspconfig.julials.setup({
         capabilities = capabilities,
         flags = lsp_flags,
-      }
+      })
 
-      lspconfig.bashls.setup {
+      lspconfig.bashls.setup({
         capabilities = capabilities,
         flags = lsp_flags,
         filetypes = { "sh", "bash" },
-      }
+      })
 
-      lspconfig.rust_analyzer.setup {
+      lspconfig.rust_analyzer.setup({
         capabilities = capabilities,
         settings = {
           ["rust-analyzer"] = {
@@ -307,9 +289,24 @@ return {
             },
           },
         },
-      }
-
+      })
     end,
   },
 
+  {
+    -- for lsp features in code cells / embedded code
+    "jmbuhr/otter.nvim",
+    dev = false,
+    dependencies = {
+      {
+        "neovim/nvim-lspconfig",
+        "nvim-treesitter/nvim-treesitter",
+      },
+    },
+    opts = {
+      verbose = {
+        no_code_found = false,
+      },
+    },
+  },
 }

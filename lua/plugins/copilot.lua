@@ -8,9 +8,9 @@ return {
   -- GitHub copilot
   {
     "zbirenbaum/copilot.lua",
-    enabled = false,
+    enabled = true,
     config = function()
-      require("copilot").setup {
+      require("copilot").setup({
         panel = {
           enabled = true,
           auto_trigger = true,
@@ -52,7 +52,7 @@ return {
           cvs = false,
           ["."] = false,
         },
-      }
+      })
     end,
   },
 }
