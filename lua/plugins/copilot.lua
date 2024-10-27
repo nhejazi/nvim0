@@ -14,7 +14,7 @@ return {
         panel = {
           enabled = true,
           auto_trigger = true,
-          auto_refresh = false,
+          auto_refresh = true,
           keymap = {
             jump_prev = "[[",
             jump_next = "]]",
