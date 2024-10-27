@@ -10,7 +10,7 @@ return {
 
   {
     "R-nvim/R.nvim",
-     -- only required if you also set defaults.lazy = true
+    -- only required if you also set defaults.lazy = true
     lazy = false,
     -- R.nvim is still young and we may make some breaking changes from time
     -- to time. For now we recommend pinning to the latest minor version:
@@ -21,16 +21,24 @@ return {
         hook = {
           on_filetype = function()
             vim.api.nvim_buf_set_keymap(
-              0, "n", "<Enter>", "<Plug>RDSendLine", {}
+              0,
+              "n",
+              "<Enter>",
+              "<Plug>RDSendLine",
+              {}
             )
             vim.api.nvim_buf_set_keymap(
-              0, "v", "<Enter>", "<Plug>RSendSelection", {}
+              0,
+              "v",
+              "<Enter>",
+              "<Plug>RSendSelection",
+              {}
             )
-          end
+          end,
         },
-        R_app = "radian",
+        --R_app = "radian",
         R_cmd = "R",
-        R_args = {"--quiet", "--no-save"},
+        R_args = { "--quiet", "--no-save" },
         min_editor_width = 81,
         rconsole_width = 70,
         bracketed_paste = true,
@@ -44,5 +52,4 @@ return {
       require("r").setup(opts)
     end,
   },
-
 }
