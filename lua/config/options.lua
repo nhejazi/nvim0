@@ -8,7 +8,7 @@ vim.opt.relativenumber = false -- hide relative linenumbers
 vim.opt.signcolumn = "number"
 vim.opt.mousefocus = true
 vim.opt.wildmenu = true
-vim.opt.wildmode = "longest"
+vim.opt.wildmode = "full"
 
 vim.opt.timeoutlen = 400 -- until which-key pops up
 vim.opt.updatetime = 250 -- for autocommands and hovers
@@ -47,7 +47,7 @@ vim.opt.completeopt = "menuone,noinsert"
 -- set marker for 80 columns
 vim.opt.colorcolumn = "80"
 
-vim.cmd [[
+vim.cmd([[
 let g:currentmode={
        \ "n"      : "%#String# NORMAL ",
        \ "v"      : "%#Search# VISUAL ",
@@ -60,7 +60,7 @@ let g:currentmode={
        \ "c"      : "%#CurSearch# Command ",
        \ "t"      : "%#ModeMsg# TERM ",
        \}
-]]
+]])
 
 -- hide cmdline when not used
 vim.opt.cmdheight = 1
@@ -74,19 +74,19 @@ vim.opt.showtabline = 2
 
 -- don't continue comments automagically
 -- https://neovim.io/doc/user/options.html#'formatoptions'
-vim.opt.formatoptions:remove "c"
-vim.opt.formatoptions:remove "r"
-vim.opt.formatoptions:remove "o"
+vim.opt.formatoptions:remove("c")
+vim.opt.formatoptions:remove("r")
+vim.opt.formatoptions:remove("o")
 
 -- scroll before end of window
 vim.opt.scrolloff = 5
 
 -- diagnostics
-vim.diagnostic.config {
+vim.diagnostic.config({
   virtual_text = true,
   underline = true,
   signs = true,
-}
+})
 
 -- add new filetypes
 --vim.filetype.add {
@@ -97,4 +97,4 @@ vim.diagnostic.config {
 
 -- additional builtin vim packages
 -- filter quickfix list with Cfilter
-vim.cmd.packadd "cfilter"
+vim.cmd.packadd("cfilter")

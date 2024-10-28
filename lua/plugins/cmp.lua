@@ -14,6 +14,7 @@ return {
       "ray-x/cmp-treesitter",
       "kdheepak/cmp-latex-symbols",
       "jmbuhr/cmp-pandoc-references",
+      -- "brenoprata10/nvim-highlight-colors",
       "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip",
       "jmbuhr/otter.nvim",
@@ -22,7 +23,7 @@ return {
     ---@param opts cmp.ConfigSchema
     opts = function(_, opts)
       local cmp = require("cmp")
-      local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+      -- local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
       opts.mapping = vim.tbl_extend("force", opts.mapping, {
         ["<Tab>"] = cmp.mapping(function(fallback)
