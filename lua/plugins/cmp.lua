@@ -46,6 +46,7 @@ return {
         end, { "i", "s", "c" }),
       })
 
+      --[[
       for _, source in ipairs(opts.sources) do
         if source.name == "luasnip" then
           source.option = { use_show_condition = true }
@@ -64,10 +65,12 @@ return {
         if source.name == "nvim_lsp" then
           source.entry_filter = function()
             local types = require("cmp.types")
-            return types.lsp.CompletionItemKind[entry:get_kind()] ~= "Snippet"
+            return types.lsp.CompletionItemKind[source.entry:get_kind()]
+              ~= "Snippet"
           end
         end
       end
+      --]]
     end,
   },
 }
