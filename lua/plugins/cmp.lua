@@ -14,6 +14,7 @@ return {
       "ray-x/cmp-treesitter",
       "kdheepak/cmp-latex-symbols",
       "jmbuhr/cmp-pandoc-references",
+      -- "brenoprata10/nvim-highlight-colors",
       "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip",
       "jmbuhr/otter.nvim",
@@ -21,10 +22,10 @@ return {
     },
     ---@param opts cmp.ConfigSchema
     opts = function(_, opts)
-      local cmp = require "cmp"
+      local cmp = require("cmp")
 
       -- from https://github.com/dpetka2001/dotfiles/blob/10d02517395783adb31bffab5447437b8f908e15/dot_config/nvim/lua/plugins/coding.lua#L47-L62
-      local types = require "cmp.types"
+      local types = require("cmp.types")
       -- Function to sort LSP snippets, so that they appear at the end of LSP
       -- suggestions
       local function deprioritize_snippet(entry1, entry2)
@@ -48,7 +49,7 @@ return {
           if cmp.visible() then
             local entry = cmp.get_selected_entry()
             if not entry then
-              cmp.select_next_item { behavior = cmp.SelectBehavior.Select }
+              cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
             else
               cmp.confirm()
             end
