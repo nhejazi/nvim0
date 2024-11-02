@@ -23,6 +23,7 @@ return {
       "jmbuhr/otter.nvim",
       { "windwp/nvim-autopairs", opts = { fast_wrap = {} } },
     },
+
     ---@param opts cmp.ConfigSchema
     opts = function(_, opts)
       local cmp = require("cmp")
@@ -45,6 +46,7 @@ return {
             -- replace select_next_item() with confirm({ select = true }) for
             -- VSCode autocompletion behavior
             cmp.select_next_item()
+            -- cmp.confirm({ select = true })
           elseif vim.snippet.active({ direction = 1 }) then
             vim.schedule(function()
               vim.snippet.jump(1)
@@ -54,7 +56,7 @@ return {
           else
             fallback()
           end
-        end, { "i", "c" }),
+        end, { "i", "s" }),
         ["<S-Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_prev_item()
@@ -65,7 +67,7 @@ return {
           else
             fallback()
           end
-        end, { "i", "c" }),
+        end, { "i", "s" }),
       })
 
       --[[
