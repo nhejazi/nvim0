@@ -23,26 +23,11 @@ return {
       "jmbuhr/otter.nvim",
       { "windwp/nvim-autopairs", opts = { fast_wrap = {} } },
     },
+
     ---@param opts cmp.ConfigSchema
     opts = function(_, opts)
       local cmp = require("cmp")
-
-      -- from https://github.com/dpetka2001/dotfiles/blob/10d02517395783adb31bffab5447437b8f908e15/dot_config/nvim/lua/plugins/coding.lua#L47-L62
-      local types = require("cmp.types")
-      -- Function to sort LSP snippets, so that they appear at the end of LSP
-      -- suggestions
-      local function deprioritize_snippet(entry1, entry2)
-        if entry1:get_kind() == types.lsp.CompletionItemKind.Snippet then
-          return false
-        end
-        if entry2:get_kind() == types.lsp.CompletionItemKind.Snippet then
-          return true
-        end
-      end
-
-      -- Insert `deprioritize_snippet` first in the `comparators` table, so
-      -- that it has priority over the other default comparators
-      table.insert(opts.sorting.comparators, 1, deprioritize_snippet)
+      -- local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
       -- from https://www.lazyvim.org/configuration/recipes#supertab
       local has_words_before = function()
@@ -61,6 +46,7 @@ return {
             -- replace select_next_item() with confirm({ select = true }) for
             -- VSCode autocompletion behavior
             cmp.select_next_item()
+            -- cmp.confirm({ select = true })
           elseif vim.snippet.active({ direction = 1 }) then
             vim.schedule(function()
               vim.snippet.jump(1)
@@ -83,6 +69,32 @@ return {
           end
         end, { "i", "s" }),
       })
+
+      --[[
+      for _, source in ipairs(opts.sources) do
+        if source.name == "luasnip" then
+          source.option = { use_show_condition = true }
+          source.entry_filter = function()
+            local context = require("cmp.config.context")
+            local string_ctx = context.in_treesitter_capture("string")
+              or context.in_syntax_group("String")
+            local comment_ctx = context.in_treesitter_capture("comment")
+              or context.in_syntax_group("Comment")
+
+            -- Returning `true` keeps the entry while  `false` removes it
+            return not string_ctx and not comment_ctx
+          end
+        end
+
+        if source.name == "nvim_lsp" then
+          source.entry_filter = function()
+            local types = require("cmp.types")
+            return types.lsp.CompletionItemKind[source.entry:get_kind()]
+              ~= "Snippet"
+          end
+        end
+      end
+      --]]
     end,
   },
 }
