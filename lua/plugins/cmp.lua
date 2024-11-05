@@ -11,16 +11,16 @@ return {
     event = "InsertEnter",
     dependencies = {
       "hrsh7th/cmp-path",
-      "hrsh7th/cmp-cmdline",
+      -- "hrsh7th/cmp-cmdline",
       "hrsh7th/cmp-calc",
-      "hrsh7th/cmp-emoji",
+      -- "hrsh7th/cmp-emoji",
       "ray-x/cmp-treesitter",
       "kdheepak/cmp-latex-symbols",
       "jmbuhr/cmp-pandoc-references",
+      "micangl/cmp-vimtex",
       -- "brenoprata10/nvim-highlight-colors",
       "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip",
-      "jmbuhr/otter.nvim",
       { "windwp/nvim-autopairs", opts = { fast_wrap = {} } },
     },
 
@@ -64,6 +64,15 @@ return {
           end
         end, { "i", "s" }),
       })
+
+      -- add cmp-xxx sources per https://www.lazyvim.org/configuration/recipes#add-a-nvim-cmp-source
+      table.insert(opts.sources, { name = "path" })
+      table.insert(opts.sources, { name = "calc" })
+      table.insert(opts.sources, { name = "treesitter" })
+      table.insert(opts.sources, { name = "pandoc_references" })
+      table.insert(opts.sources, { name = "vimtex" })
+      table.insert(opts.sources, { name = "latex_symbols", option = { strategy = 2 } })
+      table.insert(opts.sources, { name = "luasnip", option = { use_show_condition = false } })
 
       --[[
       for _, source in ipairs(opts.sources) do
