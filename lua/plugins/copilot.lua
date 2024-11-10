@@ -12,7 +12,7 @@ return {
     config = function()
       require("copilot").setup({
         panel = {
-          enabled = true,
+          enabled = false,
           auto_trigger = true,
           auto_refresh = true,
           keymap = {
@@ -28,7 +28,7 @@ return {
           },
         },
         suggestion = {
-          enabled = true,
+          enabled = false,
           auto_trigger = true,
           hide_during_completion = true,
           debounce = 75,
@@ -42,8 +42,8 @@ return {
           },
         },
         filetypes = {
-          yaml = false,
-          markdown = false,
+          yaml = true,
+          markdown = true,
           help = false,
           gitcommit = false,
           gitrebase = false,

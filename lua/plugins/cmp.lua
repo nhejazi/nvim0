@@ -15,6 +15,7 @@ return {
       "hrsh7th/cmp-calc",
       -- "hrsh7th/cmp-emoji",
       "ray-x/cmp-treesitter",
+      "zbirenbaum/copilot-cmp",
       "kdheepak/cmp-latex-symbols",
       "jmbuhr/cmp-pandoc-references",
       "micangl/cmp-vimtex",
@@ -66,13 +67,32 @@ return {
       })
 
       -- add cmp-xxx sources per https://www.lazyvim.org/configuration/recipes#add-a-nvim-cmp-source
-      table.insert(opts.sources, { name = "path" })
-      table.insert(opts.sources, { name = "calc" })
-      table.insert(opts.sources, { name = "treesitter" })
-      table.insert(opts.sources, { name = "pandoc_references" })
-      table.insert(opts.sources, { name = "vimtex" })
-      table.insert(opts.sources, { name = "latex_symbols", option = { strategy = 2 } })
-      table.insert(opts.sources, { name = "luasnip", option = { use_show_condition = false } })
+      table.insert(opts.sources, 1, {
+        name = "copilot", group_index = 2
+      })
+      table.insert(opts.sources, 1, {
+        name = "vimtex", group_index = 2
+      })
+      table.insert(opts.sources, 1, {
+        name = "pandoc_references", group_index = 2
+      })
+      table.insert(opts.sources, 1, {
+        name = "latex_symbols", group_index = 2,
+        option = { strategy = 2 }
+      })
+      table.insert(opts.sources, 1, {
+        name = "treesitter", group_index = 2
+      })
+      table.insert(opts.sources, 1, {
+        name = "luasnip", group_index = 2,
+        option = { use_show_condition = false }
+      })
+      table.insert(opts.sources, 1, {
+        name = "path", group_index = 2
+      })
+      table.insert(opts.sources, 1, {
+        name = "calc", group_index = 2
+      })
 
       --[[
       for _, source in ipairs(opts.sources) do
