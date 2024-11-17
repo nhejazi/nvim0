@@ -5,7 +5,6 @@
 -- * disable/enabled LazyVim plugins
 -- * override the configuration of LazyVim plugins
 return {
-
   -- or you can return new options to override all the defaults
   {
     "nvim-lualine/lualine.nvim",

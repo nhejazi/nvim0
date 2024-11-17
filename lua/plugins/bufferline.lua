@@ -5,7 +5,6 @@
 -- * disable/enabled LazyVim plugins
 -- * override the configuration of LazyVim plugins
 return {
-
   -- TODO: fix colorscheme integration
   {
     "akinsho/bufferline.nvim",

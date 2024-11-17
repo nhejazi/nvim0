@@ -7,7 +7,6 @@
 
 -- modified from https://github.com/jmbuhr/quarto-nvim-kickstarter/blob/main/lua/plugins/quarto.lua
 return {
-
   { -- requires plugins in lua/plugins/treesitter.lua and lua/plugins/lsp.lua
     -- for complete functionality (language features)
     "quarto-dev/quarto-nvim",
@@ -46,10 +45,10 @@ return {
     init = function()
       vim.b["quarto_is_python_chunk"] = false
       Quarto_is_in_python_chunk = function()
-        require("otter.tools.functions").is_otter_language_context "python"
+        require("otter.tools.functions").is_otter_language_context("python")
       end
 
-      vim.cmd [[
+      vim.cmd([[
       let g:slime_dispatch_ipython_pause = 100
       function SlimeOverride_EscapeText_quarto(text)
       call v:lua.Quarto_is_in_python_chunk()
@@ -63,7 +62,7 @@ return {
       end
       end
       endfunction
-      ]]
+      ]])
 
       vim.g.slime_target = "neovim"
       vim.g.slime_no_mappings = true
@@ -89,7 +88,7 @@ return {
   },
 
   { -- preview equations
-    'jbyuki/nabla.nvim',
+    "jbyuki/nabla.nvim",
     keys = {
       { "<leader>qm", ":lua require'nabla'.toggle_virt()<cr>", desc = "toggle [m]ath equations" },
     },
@@ -114,5 +113,4 @@ return {
       { "<leader>mr", ":MoltenReevaluateCell<cr>", desc = "molten re-eval cell" },
     },
   },
-
 }
