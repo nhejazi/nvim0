@@ -24,11 +24,12 @@ return {
           end,
         },
         -- R_app = "radian",
-        -- bracketed_paste = true,
         R_cmd = "R",
         R_args = { "--quiet", "--no-save" },
         rconsole_width = 70,
         min_editor_width = 81,
+        assignment_keymap = "_",
+        -- bracketed_paste = true,
         pdfviewer = "",
         open_pdf = "open",
         disable_cmds = {
