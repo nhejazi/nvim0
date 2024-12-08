@@ -21,7 +21,7 @@ return {
   {
     "folke/tokyonight.nvim",
   },
-  -- Configure LazyVim to load nord
+  -- Configure LazyVim to load colorscheme of choice
   {
     "LazyVim/LazyVim",
     opts = {

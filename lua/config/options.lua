@@ -3,12 +3,12 @@
 -- Add any additional options here
 
 -- more opinionated
---vim.opt.number = true -- show linenumbers
 vim.opt.relativenumber = false -- hide relative linenumbers
 vim.opt.signcolumn = "number"
 vim.opt.mousefocus = true
 vim.opt.wildmenu = true
 vim.opt.wildmode = "full"
+vim.opt.termguicolors = true
 
 vim.opt.timeoutlen = 400 -- until which-key pops up
 vim.opt.updatetime = 250 -- for autocommands and hovers

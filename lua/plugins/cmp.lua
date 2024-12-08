@@ -19,7 +19,7 @@ return {
       "kdheepak/cmp-latex-symbols",
       "jmbuhr/cmp-pandoc-references",
       "micangl/cmp-vimtex",
-      -- "brenoprata10/nvim-highlight-colors",
+      "brenoprata10/nvim-highlight-colors",
       "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip",
       { "windwp/nvim-autopairs", opts = { fast_wrap = {} } },
@@ -29,6 +29,7 @@ return {
     opts = function(_, opts)
       local cmp = require("cmp")
       -- local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+      local highlight = require("nvim-highlight-colors")
 
       -- from https://www.lazyvim.org/configuration/recipes#supertab
       local has_words_before = function()
@@ -40,7 +41,7 @@ return {
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             -- replace select_next_item() with confirm({ select = true }) for
-            -- VSCode autocompletion behavior
+            -- VSCode-like autocompletion
             cmp.select_next_item()
             -- cmp.confirm({ select = true })
           elseif vim.snippet.active({ direction = 1 }) then
@@ -68,57 +69,44 @@ return {
 
       -- add cmp-xxx sources per https://www.lazyvim.org/configuration/recipes#add-a-nvim-cmp-source
       table.insert(opts.sources, 1, {
-        name = "copilot", group_index = 2
+        name = "copilot",
+        group_index = 2,
       })
       table.insert(opts.sources, 1, {
-        name = "vimtex", group_index = 2
+        name = "vimtex",
+        group_index = 2,
       })
       table.insert(opts.sources, 1, {
-        name = "pandoc_references", group_index = 2
+        name = "pandoc_references",
+        group_index = 2,
       })
       table.insert(opts.sources, 1, {
-        name = "latex_symbols", group_index = 2,
-        option = { strategy = 2 }
+        name = "latex_symbols",
+        group_index = 2,
+        option = { strategy = 2 },
       })
       table.insert(opts.sources, 1, {
-        name = "treesitter", group_index = 2
+        name = "treesitter",
+        group_index = 2,
       })
       table.insert(opts.sources, 1, {
-        name = "luasnip", group_index = 2,
-        option = { use_show_condition = false }
+        name = "luasnip",
+        group_index = 2,
+        option = { use_show_condition = false },
       })
       table.insert(opts.sources, 1, {
-        name = "path", group_index = 2
+        name = "path",
+        group_index = 2,
       })
       table.insert(opts.sources, 1, {
-        name = "calc", group_index = 2
+        name = "calc",
+        group_index = 2,
       })
 
-      --[[
-      for _, source in ipairs(opts.sources) do
-        if source.name == "luasnip" then
-          source.option = { use_show_condition = true }
-          source.entry_filter = function()
-            local context = require("cmp.config.context")
-            local string_ctx = context.in_treesitter_capture("string")
-              or context.in_syntax_group("String")
-            local comment_ctx = context.in_treesitter_capture("comment")
-              or context.in_syntax_group("Comment")
-
-            -- Returning `true` keeps the entry while  `false` removes it
-            return not string_ctx and not comment_ctx
-          end
-        end
-
-        if source.name == "nvim_lsp" then
-          source.entry_filter = function()
-            local types = require("cmp.types")
-            return types.lsp.CompletionItemKind[source.entry:get_kind()]
-              ~= "Snippet"
-          end
-        end
-      end
-      --]]
+      -- highlighting
+      opts.formatting = vim.tbl_extend("force", opts.formatting, {
+        format = highlight.format,
+      })
     end,
   },
 }
