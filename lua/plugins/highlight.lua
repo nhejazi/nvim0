@@ -5,10 +5,11 @@
 -- * disable/enabled LazyVim plugins
 -- * override the configuration of LazyVim plugins
 return {
+  -- highlight colors
   {
-    {
-      "brenoprata10/nvim-highlight-colors",
-      opts = {},
-    },
+    "norcalli/nvim-colorizer.lua",
+    config = function()
+      require("colorizer").setup()
+    end,
   },
 }

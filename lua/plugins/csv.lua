@@ -9,7 +9,13 @@ return {
   {
     "hat0uma/csvview.nvim",
     config = function()
-      require("csvview").setup()
+      require("csvview").setup({
+        view = {
+          min_column_width = 7,
+          spacing = 4,
+          display_mode = "border",
+        },
+      })
     end,
   },
 }

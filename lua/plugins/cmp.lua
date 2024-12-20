@@ -19,7 +19,6 @@ return {
       "kdheepak/cmp-latex-symbols",
       "jmbuhr/cmp-pandoc-references",
       "micangl/cmp-vimtex",
-      "brenoprata10/nvim-highlight-colors",
       "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip",
       { "windwp/nvim-autopairs", opts = { fast_wrap = {} } },
@@ -101,11 +100,6 @@ return {
       table.insert(opts.sources, 1, {
         name = "calc",
         group_index = 2,
-      })
-
-      -- highlighting
-      opts.formatting = vim.tbl_extend("force", opts.formatting, {
-        format = highlight.format,
       })
     end,
   },
