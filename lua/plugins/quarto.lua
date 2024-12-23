@@ -7,8 +7,24 @@
 
 -- modified from https://github.com/jmbuhr/quarto-nvim-kickstarter/blob/main/lua/plugins/quarto.lua
 return {
-  { -- requires plugins in lua/plugins/treesitter.lua and lua/plugins/lsp.lua
-    -- for complete functionality (language features)
+  -- for lsp-like features in code cells and embedded code
+  {
+    "jmbuhr/otter.nvim",
+    dev = false,
+    dependencies = {
+      {
+        "nvim-treesitter/nvim-treesitter",
+      },
+    },
+    opts = {
+      verbose = {
+        no_code_found = false,
+      },
+    },
+  },
+
+  -- for enhanced quarto functionality, using treesitter and lsp
+  {
     "quarto-dev/quarto-nvim",
     ft = { "quarto" },
     dev = false,
@@ -20,8 +36,8 @@ return {
     },
   },
 
-  { -- directly open ipynb files as quarto docuements
-    -- and convert back behind the scenes
+  -- directly open ipynb files as quarto and convert back behind the scenes
+  {
     "GCBallesteros/jupytext.nvim",
     opts = {
       custom_language_formatting = {
@@ -39,7 +55,8 @@ return {
     },
   },
 
-  { -- send code from python/R/qmd documents to a REPL like ipython, R, bash
+  -- send code from python/R/qmd documents to a REPL like ipython, R, bash
+  {
     "jpalardy/vim-slime",
     dev = false,
     init = function()
@@ -87,13 +104,15 @@ return {
     end,
   },
 
-  { -- preview equations
+  -- preview equations
+  {
     "jbyuki/nabla.nvim",
     keys = {
       { "<leader>qm", ":lua require'nabla'.toggle_virt()<cr>", desc = "toggle [m]ath equations" },
     },
   },
 
+  -- interactively running code using a jupyter kernel
   {
     "benlubas/molten-nvim",
     enabled = false,

@@ -55,4 +55,9 @@ return {
       })
     end,
   },
+
+  -- integration with blink
+  {
+    "giuxtaposition/blink-cmp-copilot",
+  },
 }

@@ -75,26 +75,13 @@ return {
       })
 
       vim.api.nvim_create_autocmd("LspAttach", {
-        group = vim.api.nvim_create_augroup(
-          "kickstart-lsp-attach",
-          { clear = true }
-        ),
+        group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
         callback = function(event)
           local function map(keys, func, desc)
-            vim.keymap.set(
-              "n",
-              keys,
-              func,
-              { buffer = event.buf, desc = "LSP: " .. desc }
-            )
+            vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
           end
           local function vmap(keys, func, desc)
-            vim.keymap.set(
-              "v",
-              keys,
-              func,
-              { buffer = event.buf, desc = "LSP: " .. desc }
-            )
+            vim.keymap.set("v", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
           end
 
           local client = vim.lsp.get_client_by_id(event.data.client_id)
@@ -120,11 +107,7 @@ return {
           map("<leader>lR", vim.lsp.buf.rename, "[l]sp [R]ename")
           map("<leader>lf", vim.lsp.buf.format, "[l]sp [f]ormat")
           vmap("<leader>lf", vim.lsp.buf.format, "[l]sp [f]ormat")
-          map(
-            "<leader>lq",
-            vim.diagnostic.setqflist,
-            "[l]sp diagnostic [q]uickfix"
-          )
+          map("<leader>lq", vim.diagnostic.setqflist, "[l]sp diagnostic [q]uickfix")
         end,
       })
 
@@ -134,11 +117,7 @@ return {
       }
 
       local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = vim.tbl_deep_extend(
-        "force",
-        capabilities,
-        require("cmp_nvim_lsp").default_capabilities()
-      )
+      capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
       capabilities.textDocument.completion.completionItem.snippetSupport = true
 
       -- also needs:
@@ -229,10 +208,7 @@ return {
         vim.notify_once("quarto not found, lua library files not loaded")
       else
         table.insert(lua_library_files, resource_path .. "/lua-types")
-        table.insert(
-          lua_plugin_paths,
-          resource_path .. "/lua-plugin/plugin.lua"
-        )
+        table.insert(lua_plugin_paths, resource_path .. "/lua-plugin/plugin.lua")
       end
 
       lspconfig.lua_ls.setup({
@@ -291,22 +267,5 @@ return {
         },
       })
     end,
-  },
-
-  {
-    -- for lsp features in code cells / embedded code
-    "jmbuhr/otter.nvim",
-    dev = false,
-    dependencies = {
-      {
-        "neovim/nvim-lspconfig",
-        "nvim-treesitter/nvim-treesitter",
-      },
-    },
-    opts = {
-      verbose = {
-        no_code_found = false,
-      },
-    },
   },
 }

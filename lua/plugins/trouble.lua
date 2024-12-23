@@ -8,6 +8,6 @@ return {
   -- TODO: consider disabling
   {
     "folke/trouble.nvim",
-    enabled = true,
+    enabled = false,
   },
 }
