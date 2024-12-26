@@ -21,11 +21,12 @@ return {
         "jmbuhr/cmp-pandoc-references",
         "kdheepak/cmp-latex-symbols",
         "micangl/cmp-vimtex",
+        "R-nvim/cmp-r",
       },
     },
     opts = {
       sources = {
-        default = { "lsp", "path", "snippets", "buffer", "copilot", "markdown", "vimtex", "pandoc_references" },
+        default = { "lsp", "path", "snippets", "buffer", "copilot", "rlang", "markdown", "pandoc_references", "vimtex" },
         providers = {
           copilot = {
             name = "copilot",
@@ -36,6 +37,11 @@ return {
           markdown = {
             name = "RenderMarkdown",
             module = "render-markdown.integ.blink",
+            score_offset = 100,
+          },
+          rlang = {
+            name = "cmp_r",
+            module = "blink.compat.source",
             score_offset = 100,
           },
           vimtex = {

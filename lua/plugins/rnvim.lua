@@ -26,6 +26,7 @@ return {
         -- R_app = "radian",
         R_cmd = "R",
         R_args = { "--quiet", "--no-save" },
+        rmdchunk = "``",
         rconsole_width = 70,
         min_editor_width = 81,
         assignment_keymap = "_",
