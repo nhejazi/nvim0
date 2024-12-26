@@ -25,13 +25,18 @@ return {
     },
     opts = {
       sources = {
-        default = { "lsp", "path", "snippets", "buffer", "copilot", "vimtex", "pandoc_references" },
+        default = { "lsp", "path", "snippets", "buffer", "copilot", "markdown", "vimtex", "pandoc_references" },
         providers = {
           copilot = {
             name = "copilot",
             module = "blink-cmp-copilot",
             score_offset = 100,
             async = true,
+          },
+          markdown = {
+            name = "RenderMarkdown",
+            module = "render-markdown.integ.blink",
+            score_offset = 100,
           },
           vimtex = {
             name = "vimtex",

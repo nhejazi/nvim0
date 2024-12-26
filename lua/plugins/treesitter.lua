@@ -18,6 +18,7 @@ return {
         "julia",
         "latex", -- requires treesitter-cli, auto-installed via Mason
         "lua",
+        "luadoc",
         "markdown",
         "markdown_inline",
         "mermaid",
@@ -25,6 +26,7 @@ return {
         "r",
         "rnoweb",
         "regex",
+        "toml",
         "typescript",
         "vim",
         "vimdoc",

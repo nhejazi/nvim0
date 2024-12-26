@@ -12,11 +12,14 @@ return {
     "jmbuhr/otter.nvim",
     dev = false,
     dependencies = {
-      {
-        "nvim-treesitter/nvim-treesitter",
-      },
+      "nvim-treesitter/nvim-treesitter",
     },
     opts = {
+      buffers = {
+        -- avoid linter errors in R chunks
+        -- see https://github.com/quarto-dev/quarto-nvim/issues/84
+        write_to_disk = true,
+      },
       verbose = {
         no_code_found = false,
       },

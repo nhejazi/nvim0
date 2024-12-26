@@ -9,18 +9,29 @@ return {
   {
     "ellisonleao/gruvbox.nvim",
   },
+
   -- add nord
   {
     "shaunsingh/nord.nvim",
   },
+
   -- add rose pine
   {
     "rose-pine/neovim",
+    name = "rose-pine",
+    opts = {
+      variant = "moon",
+    },
   },
+
   -- add tokyo night
   {
     "folke/tokyonight.nvim",
+    opts = {
+      style = "night",
+    },
   },
+
   -- Configure LazyVim to load colorscheme of choice
   {
     "LazyVim/LazyVim",
