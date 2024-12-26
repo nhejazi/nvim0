@@ -10,11 +10,18 @@ return {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
+        "tree-sitter-cli",
         "stylua",
         "shellcheck",
         "shfmt",
         "flake8",
         "black",
+        "r-languageserver",
+        "julia-lsp",
+        "marksman",
+        "texlab",
+        "jupytext",
+        "proselint",
       },
     },
   },

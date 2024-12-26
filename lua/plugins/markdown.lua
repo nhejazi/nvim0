@@ -7,9 +7,14 @@
 
 -- adapted from https://github.com/lervag/vimtex?tab=readme-ov-file#lazynvim
 return {
-  -- markdown auto-render engine (LazyVim default)
+  -- markdown auto-render engine
   {
     "MeanderingProgrammer/render-markdown.nvim",
+    ft = {
+      "markdown",
+      "rmd",
+      "quarto",
+    },
     opts = {
       -- options to always show
       anti_conceal = {
@@ -18,20 +23,10 @@ return {
           code_background = true,
           code_border = true,
           quote = true,
+          sign = true,
           link = true,
         },
       },
     },
-  },
-
-  -- markdown preview engine
-  {
-    "OXY2DEV/markview.nvim",
-    lazy = false,
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "nvim-tree/nvim-web-devicons",
-    },
-    enabled = false,
   },
 }
