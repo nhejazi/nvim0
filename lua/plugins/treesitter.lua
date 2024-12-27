@@ -17,7 +17,7 @@ return {
         "javascript",
         "json",
         "julia",
-        "latex", -- requires treesitter-cli, auto-installed via Mason
+        "latex", -- requires tree-sitter-cli, auto-installed via Mason
         "lua",
         "luadoc",
         "markdown",

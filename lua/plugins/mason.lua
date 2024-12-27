@@ -16,7 +16,7 @@ return {
         "shfmt",
         "flake8",
         "black",
-        "r-languageserver",
+        -- "r-languageserver",  -- disable to avoid clashing with cmp-r
         "julia-lsp",
         "marksman",
         "texlab",
