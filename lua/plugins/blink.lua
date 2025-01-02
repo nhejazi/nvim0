@@ -26,38 +26,54 @@ return {
     },
     opts = {
       sources = {
-        default = { "lsp", "path", "snippets", "buffer", "copilot", "rlang", "markdown", "pandoc_references", "vimtex" },
+        default = {
+          "lsp",
+          "path",
+          "snippets",
+          "buffer",
+          "copilot",
+          "rlang",
+          "markdown",
+          "pandoc_references",
+          -- "latex_symbols",
+          "vimtex",
+        },
         providers = {
           copilot = {
             name = "copilot",
             module = "blink-cmp-copilot",
-            score_offset = 100,
+            score_offset = 20,
             async = true,
           },
           markdown = {
             name = "RenderMarkdown",
             module = "render-markdown.integ.blink",
-            score_offset = 100,
+            score_offset = 10,
           },
+          -- markdown = {
+          --   name = "Markview",
+          --   module = "markview.integ.blink",
+          --   score_offset = 10,
+          -- },
           rlang = {
             name = "cmp_r",
             module = "blink.compat.source",
-            score_offset = 100,
+            score_offset = 10,
           },
           vimtex = {
             name = "vimtex",
             module = "blink.compat.source",
-            score_offset = 100,
+            score_offset = 10,
           },
           latex_symbols = {
             name = "latex_symbols",
             module = "blink.compat.source",
-            score_offset = 100,
+            score_offset = 10,
           },
           pandoc_references = {
             name = "pandoc_references",
             module = "blink.compat.source",
-            score_offset = 100,
+            score_offset = 10,
           },
         },
       },
