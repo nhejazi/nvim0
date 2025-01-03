@@ -15,6 +15,11 @@ return {
     "shaunsingh/nord.nvim",
   },
 
+  -- add ashen
+  {
+    "ficcdaf/ashen.nvim",
+  },
+
   -- add rose pine
   {
     "rose-pine/neovim",
@@ -36,7 +41,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "nord",
+      colorscheme = "rose-pine",
     },
   },
 }
