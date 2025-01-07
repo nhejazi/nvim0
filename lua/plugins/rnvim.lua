@@ -1,18 +1,8 @@
--- every spec file under /plugins will be loaded automatically by lazy.nvim
---
--- In your plugin files, you can:
--- * add extra plugins
--- * disable/enabled LazyVim plugins
--- * override the configuration of LazyVim plugins
-
--- adapted from README of https://github.com/R-nvim/R.nvim
 return {
   {
     "R-nvim/R.nvim",
-    -- only required if you also set defaults.lazy = true
     lazy = false,
-    -- R.nvim is still young and we may make some breaking changes from time
-    -- to time. For now we recommend pinning to the latest minor version:
+    -- devs recommend pinning to the latest minor version:
     version = "~0.1.0",
     opts = {
       hook = {

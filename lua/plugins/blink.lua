@@ -1,9 +1,3 @@
--- every spec file under /plugins will be loaded automatically by lazy.nvim
---
--- In your plugin files, you can:
--- * add extra plugins
--- * disable/enabled LazyVim plugins
--- * override the configuration of LazyVim plugins
 return {
   -- add blink.compat, for compatibility with cmp  modules
   {
@@ -44,33 +38,34 @@ return {
           copilot = {
             name = "copilot",
             module = "blink-cmp-copilot",
-            score_offset = 17,
+            score_offset = 6,
             async = true,
           },
           markdown = {
             name = "RenderMarkdown",
             module = "render-markdown.integ.blink",
-            score_offset = 15,
+            fallbacks = { "lsp" },
+            score_offset = 5,
           },
           rlang = {
             name = "cmp_r",
             module = "blink.compat.source",
-            score_offset = 20,
+            score_offset = 7,
           },
           vimtex = {
             name = "vimtex",
             module = "blink.compat.source",
-            score_offset = 15,
+            score_offset = 5,
           },
           latex_symbols = {
             name = "latex_symbols",
             module = "blink.compat.source",
-            score_offset = 10,
+            score_offset = 4,
           },
           pandoc_references = {
             name = "pandoc_references",
             module = "blink.compat.source",
-            score_offset = 10,
+            score_offset = 5,
           },
         },
       },

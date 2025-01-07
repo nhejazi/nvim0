@@ -1,26 +1,20 @@
--- every spec file under /plugins will be loaded automatically by lazy.nvim
---
--- In your plugin files, you can:
--- * add extra plugins
--- * disable/enabled LazyVim plugins
--- * override the configuration of LazyVim plugins
 return {
-  -- add gruvbox
+  -- gruvbox: https://github.com/ellisonleao/gruvbox.nvim
   {
     "ellisonleao/gruvbox.nvim",
   },
 
-  -- add nord
+  -- nord: https://github.com/shaunsingh/nord.nvim
   {
     "shaunsingh/nord.nvim",
   },
 
-  -- add ashen
+  -- ashen: https://github.com/ficcdaf/ashen.nvim
   {
     "ficcdaf/ashen.nvim",
   },
 
-  -- add rose pine
+  -- rosé pine: https://github.com/rose-pine/neovim
   {
     "rose-pine/neovim",
     name = "rose-pine",
@@ -29,7 +23,7 @@ return {
     },
   },
 
-  -- add tokyo night
+  -- tokyo night: https://github.com/folke/tokyonight.nvim
   {
     "folke/tokyonight.nvim",
     opts = {
@@ -37,7 +31,7 @@ return {
     },
   },
 
-  -- Configure LazyVim to load colorscheme of choice
+  -- load colorscheme of choice
   {
     "LazyVim/LazyVim",
     opts = {

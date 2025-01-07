@@ -16,17 +16,22 @@ return {
       "quarto",
     },
     opts = {
-      -- options to always show
-      anti_conceal = {
-        ignore = {
-          code_language = true,
-          code_background = true,
-          code_border = true,
-          quote = true,
-          sign = true,
-          link = true,
-        },
+      -- options for code display
+      code = {
+        style = "none",
+        sign = false,
+        width = 0,
+        border = "none",
+        right_pad = 4,
       },
+      -- options to always show (never hide via local conceal behavior)
+      -- anti_conceal = {
+      --   ignore = {
+      --     code_background = true,
+      --     code_border = true,
+      --     link = true,
+      --   },
+      -- },
     },
   },
 

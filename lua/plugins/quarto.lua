@@ -1,16 +1,7 @@
--- every spec file under /plugins will be loaded automatically by lazy.nvim
---
--- In your plugin files, you can:
--- * add extra plugins
--- * disable/enabled LazyVim plugins
--- * override the configuration of LazyVim plugins
-
--- modified from https://github.com/jmbuhr/quarto-nvim-kickstarter/blob/main/lua/plugins/quarto.lua
 return {
   -- for lsp-like features in code cells and embedded code
   {
     "jmbuhr/otter.nvim",
-    dev = false,
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
     },
@@ -30,13 +21,12 @@ return {
   {
     "quarto-dev/quarto-nvim",
     ft = { "quarto" },
-    dev = false,
-    opts = {},
     dependencies = {
       -- for language features in code cells
       -- configured in lsp.lua and added as a nvim-cmp source in base.lua
       "jmbuhr/otter.nvim",
     },
+    opts = {},
   },
 
   -- directly open ipynb files as quarto and convert back behind the scenes
@@ -61,7 +51,6 @@ return {
   -- send code from python/R/qmd documents to a REPL like ipython, R, bash
   {
     "jpalardy/vim-slime",
-    dev = false,
     init = function()
       vim.b["quarto_is_python_chunk"] = false
       Quarto_is_in_python_chunk = function()
@@ -105,34 +94,5 @@ return {
       vim.keymap.set("n", "<leader>cm", mark_terminal, { desc = "[m]ark terminal" })
       vim.keymap.set("n", "<leader>cs", set_terminal, { desc = "[s]et terminal" })
     end,
-  },
-
-  -- preview equations
-  {
-    "jbyuki/nabla.nvim",
-    keys = {
-      { "<leader>qm", ":lua require'nabla'.toggle_virt()<cr>", desc = "toggle [m]ath equations" },
-    },
-  },
-
-  -- interactively running code using a jupyter kernel
-  {
-    "benlubas/molten-nvim",
-    enabled = false,
-    build = ":UpdateRemotePlugins",
-    init = function()
-      vim.g.molten_output_win_max_height = 20
-      vim.g.molten_auto_open_output = false
-    end,
-    keys = {
-      { "<leader>mi", ":MoltenInit<cr>", desc = "[m]olten [i]nit" },
-      {
-        "<leader>mv",
-        ":<C-u>MoltenEvaluateVisual<cr>",
-        mode = "v",
-        desc = "molten eval visual",
-      },
-      { "<leader>mr", ":MoltenReevaluateCell<cr>", desc = "molten re-eval cell" },
-    },
   },
 }
