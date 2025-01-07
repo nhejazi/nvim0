@@ -50,6 +50,7 @@ return {
           rlang = {
             name = "cmp_r",
             module = "blink.compat.source",
+            fallbacks = { "lsp" },
             score_offset = 7,
           },
           vimtex = {
@@ -60,7 +61,7 @@ return {
           latex_symbols = {
             name = "latex_symbols",
             module = "blink.compat.source",
-            score_offset = 4,
+            score_offset = 5,
           },
           pandoc_references = {
             name = "pandoc_references",

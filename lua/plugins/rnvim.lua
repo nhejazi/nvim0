@@ -1,4 +1,11 @@
 return {
+  -- R auto-completion engine
+  {
+    "R-nvim/cmp-r",
+    lazy = true,
+  },
+
+  -- REPL support for R
   {
     "R-nvim/R.nvim",
     lazy = false,

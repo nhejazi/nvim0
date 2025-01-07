@@ -10,7 +10,7 @@ return {
         "shfmt",
         "flake8",
         "black",
-        -- "r-languageserver",  -- disable to avoid clashing with cmp-r
+        "r-languageserver", -- disabled in .Rprofile to avoid clashing w/ cmp-r
         "julia-lsp",
         "marksman",
         "texlab",
