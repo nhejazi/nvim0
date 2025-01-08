@@ -60,7 +60,7 @@ return {
           latex_symbols = {
             name = "latex_symbols",
             module = "blink.compat.source",
-            score_offset = 4,
+            score_offset = 3,
           },
           pandoc_references = {
             name = "pandoc_references",

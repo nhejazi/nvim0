@@ -2,6 +2,9 @@ return {
   --  smooth scrolling
   {
     "karb94/neoscroll.nvim",
-    opts = {},
+    opts = {
+      easing = "sine",
+      ignored_events = {},
+    },
   },
 }
