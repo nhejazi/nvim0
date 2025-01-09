@@ -21,6 +21,13 @@ return {
       },
     },
     opts = {
+      completion = {
+        accept = {
+          auto_brackets = {
+            enabled = false,
+          },
+        },
+      },
       sources = {
         default = {
           "lsp",
@@ -35,37 +42,43 @@ return {
           "vimtex",
         },
         providers = {
+          lsp = {
+            name = "LSP",
+            module = "blink.cmp.sources.lsp",
+            async = true,
+            -- timeout_ms = 500,
+          },
           copilot = {
             name = "copilot",
             module = "blink-cmp-copilot",
-            score_offset = 5,
+            score_offset = 110,
             async = true,
           },
           markdown = {
-            name = "RenderMarkdown",
+            name = "markdown",
             module = "render-markdown.integ.blink",
             fallbacks = { "lsp" },
-            score_offset = 3,
+            score_offset = 90,
           },
           rlang = {
-            name = "cmp_r",
+            name = "R",
             module = "blink.compat.source",
-            score_offset = 5,
+            score_offset = 120,
           },
           vimtex = {
-            name = "vimtex",
+            name = "vimTeX",
             module = "blink.compat.source",
-            score_offset = 4,
+            score_offset = 100,
           },
           latex_symbols = {
-            name = "latex_symbols",
+            name = "TeX",
             module = "blink.compat.source",
-            score_offset = 3,
+            score_offset = 100,
           },
           pandoc_references = {
-            name = "pandoc_references",
+            name = "bib",
             module = "blink.compat.source",
-            score_offset = 4,
+            score_offset = 100,
           },
         },
       },
