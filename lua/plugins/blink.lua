@@ -12,7 +12,6 @@ return {
     dependencies = {
       {
         "saghen/blink.compat",
-        -- "xzbdmw/colorful-menu.nvim",
         "giuxtaposition/blink-cmp-copilot",
         "jmbuhr/cmp-pandoc-references",
         "kdheepak/cmp-latex-symbols",
@@ -21,11 +20,19 @@ return {
       },
     },
     opts = {
+      keymap = {
+        preset = "enter",
+        ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
+        ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
+      },
       completion = {
         accept = {
           auto_brackets = {
-            enabled = false,
+            enabled = true,
           },
+        },
+        ghost_text = {
+          enabled = false,
         },
       },
       sources = {
@@ -36,39 +43,32 @@ return {
           "buffer",
           "copilot",
           "rlang",
-          "markdown",
+          -- "markdown",
           "pandoc_references",
           "latex_symbols",
           "vimtex",
         },
         providers = {
-          lsp = {
-            name = "LSP",
-            module = "blink.cmp.sources.lsp",
-            -- async = true,
-            timeout_ms = 500,
-          },
           copilot = {
             name = "copilot",
             module = "blink-cmp-copilot",
             score_offset = 100,
             async = true,
           },
-          markdown = {
-            name = "RenderMarkdown",
-            module = "render-markdown.integ.blink",
-            fallbacks = { "lsp" },
-            score_offset = 70,
-          },
+          -- markdown = {
+          --   name = "RenderMarkdown",
+          --   module = "render-markdown.integ.blink",
+          --   score_offset = 90,
+          -- },
           rlang = {
             name = "cmp_r",
             module = "blink.compat.source",
-            score_offset = 110,
+            score_offset = 100,
           },
           vimtex = {
             name = "vimtex",
             module = "blink.compat.source",
-            score_offset = 85,
+            score_offset = 90,
           },
           latex_symbols = {
             name = "latex_symbols",

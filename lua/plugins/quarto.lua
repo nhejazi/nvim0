@@ -23,7 +23,6 @@ return {
     ft = { "quarto" },
     dependencies = {
       -- for language features in code cells
-      -- configured in lsp.lua and added as a nvim-cmp source in base.lua
       "jmbuhr/otter.nvim",
     },
     opts = {},
