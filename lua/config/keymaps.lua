@@ -224,32 +224,39 @@ wk.add({
   },
 }, { mode = "i" })
 
-local function new_terminal(lang)
-  vim.cmd("vsplit term://" .. lang)
+local function new_terminal(lang, split_type)
+  if split_type == nil then
+    split_type = "vsplit"
+  elseif split_type == "horizontal" then
+    split_type = "split"
+  elseif split_type == "vertical" then
+    split_type = "vsplit"
+  end
+  vim.cmd(split_type .. " term://" .. lang)
 end
 
 local function new_terminal_python()
-  new_terminal("python")
+  new_terminal("python", "vertical")
 end
 
 local function new_terminal_r()
-  new_terminal("R --no-save")
+  new_terminal("R --no-save", "vertical")
 end
 
 local function new_terminal_ipython()
-  new_terminal("ipython --no-confirm-exit")
+  new_terminal("ipython --no-confirm-exit", "vertical")
 end
 
 local function new_terminal_radian()
-  new_terminal("radian --no-save")
+  new_terminal("radian --no-save", "vertical")
 end
 
 local function new_terminal_julia()
-  new_terminal("julia")
+  new_terminal("julia", "vertical")
 end
 
 local function new_terminal_shell()
-  new_terminal("$SHELL")
+  new_terminal("$SHELL", "horizontal")
 end
 
 local function get_otter_symbols_lang()
