@@ -2,16 +2,19 @@ return {
   -- gruvbox: https://github.com/ellisonleao/gruvbox.nvim
   {
     "ellisonleao/gruvbox.nvim",
+    enabled = false,
   },
 
   -- nord: https://github.com/shaunsingh/nord.nvim
   {
     "shaunsingh/nord.nvim",
+    enabled = false,
   },
 
   -- ashen: https://github.com/ficcdaf/ashen.nvim
   {
     "ficcdaf/ashen.nvim",
+    enabled = false,
   },
 
   -- rosé pine: https://github.com/rose-pine/neovim
@@ -29,6 +32,7 @@ return {
     opts = {
       style = "night",
     },
+    enabled = false,
   },
 
   -- load colorscheme of choice

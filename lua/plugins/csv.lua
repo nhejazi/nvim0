@@ -2,6 +2,8 @@ return {
   -- CSV viewer
   {
     "hat0uma/csvview.nvim",
+    lazy = true,
+    ft = { "csv" },
     opts = {
       view = {
         min_column_width = 7,

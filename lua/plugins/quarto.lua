@@ -1,13 +1,19 @@
 return {
-  -- for lsp-like features in code cells and embedded code
+  -- for LSP-like features in code cells and embedded code
   {
     "jmbuhr/otter.nvim",
+    lazy = true,
+    ft = {
+      "markdown",
+      "rmd",
+      "quarto",
+    },
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
     },
     opts = {
       buffers = {
-        -- avoid linter errors in R chunks
+        -- avoid linter errors in R chunks:
         -- see https://github.com/quarto-dev/quarto-nvim/issues/84
         write_to_disk = true,
       },
@@ -17,9 +23,10 @@ return {
     },
   },
 
-  -- for enhanced quarto functionality, using treesitter and lsp
+  -- for enhanced quarto functionality, using treesitter and LSP
   {
     "quarto-dev/quarto-nvim",
+    lazy = true,
     ft = { "quarto" },
     dependencies = {
       -- for language features in code cells
@@ -28,9 +35,10 @@ return {
     opts = {},
   },
 
-  -- directly open ipynb files as quarto and convert back behind the scenes
+  -- open jupyter notebooks as quarto and convert back behind the scenes
   {
     "GCBallesteros/jupytext.nvim",
+    lazy = true,
     opts = {
       custom_language_formatting = {
         python = {
@@ -47,7 +55,7 @@ return {
     },
   },
 
-  -- send code from python/R/qmd documents to a REPL like ipython, R, bash
+  -- send code from python/R/qmd files to a REPL, e.g., ipython, R, shell
   {
     "jpalardy/vim-slime",
     init = function()
