@@ -73,12 +73,12 @@ return {
           latex_symbols = {
             name = "latex_symbols",
             module = "blink.compat.source",
-            score_offset = 80,
+            score_offset = 90,
           },
           pandoc_references = {
             name = "pandoc_references",
             module = "blink.compat.source",
-            score_offset = 90,
+            score_offset = 100,
           },
         },
       },
