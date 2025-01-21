@@ -24,16 +24,6 @@ local imap = function(key, effect)
   vim.keymap.set("i", key, effect, { silent = true, noremap = true })
 end
 
-local cmap = function(key, effect)
-  vim.keymap.set("c", key, effect, { silent = true, noremap = true })
-end
-
--- Move between windows using <ctrl> direction
--- nmap("<C-j>", "<C-W>j")
--- nmap("<C-k>", "<C-W>k")
--- nmap("<C-h>", "<C-W>h")
--- nmap("<C-l>", "<C-W>l")
-
 -- Resize window using <shift> arrow keys
 nmap("<S-Up>", "<cmd>resize +2<CR>")
 nmap("<S-Down>", "<cmd>resize -2<CR>")
@@ -94,39 +84,15 @@ local function send_region()
   end
 end
 
--- send code with ctrl+Enter
--- just like in e.g. RStudio
--- needs kitty (or other terminal) config:
--- map shift+enter send_text all \x1b[13;2u
--- map ctrl+enter send_text all \x1b[13;5u
+-- send code with ctrl+space
 nmap("<c-cr>", send_cell)
 nmap("<s-cr>", send_cell)
 imap("<c-cr>", send_cell)
 imap("<s-cr>", send_cell)
 
---- Show R dataframe in the browser
--- might not use what you think should be your default web browser
--- because it is a plain html file, not a link
--- see https://askubuntu.com/a/864698 for places to look for
-local function show_r_table()
-  local node = vim.treesitter.get_node({ ignore_injections = false })
-  assert(node, "no symbol found under cursor")
-  local text = vim.treesitter.get_node_text(node, 0)
-  local cmd = [[call slime#send("DT::datatable(]] .. text .. [[)" . "\r")]]
-  vim.cmd(cmd)
-end
-
 -- keep selection after indent/dedent
 vmap(">", ">gv")
 vmap("<", "<gv")
-
--- move between splits and tabs
--- nmap("<c-h>", "<c-w>h")
--- nmap("<c-l>", "<c-w>l")
--- nmap("<c-j>", "<c-w>j")
--- nmap("<c-k>", "<c-w>k")
--- nmap("H", "<cmd>tabprevious<cr>")
--- nmap("L", "<cmd>tabnext<cr>")
 
 local is_code_chunk = function()
   local current, _ = require("otter.keeper").get_current_language_context()
@@ -172,13 +138,12 @@ local insert_bash_chunk = function()
   insert_code_chunk("bash")
 end
 
-local insert_ojs_chunk = function()
-  insert_code_chunk("ojs")
-end
+-- local insert_ojs_chunk = function()
+--   insert_code_chunk("ojs")
+-- end
 
---show kepbindings with whichkey
---add your own here if you want them to
---show up in the popup as well
+--show kepbindings with whichkey add your own here if you want them to show up
+--in the popup as well
 
 -- normal mode
 wk.add({
@@ -197,7 +162,7 @@ wk.add({
 wk.add({
   {
     mode = { "v" },
-    { ".", ":norm .<cr>", desc = "repat last normal mode command" },
+    { ".", ":norm .<cr>", desc = "repeat last normal mode command" },
     { "<M-j>", ":m'>+<cr>`<my`>mzgv`yo`z", desc = "move line down" },
     { "<M-k>", ":m'<-2<cr>`>my`<mzgv`yo`z", desc = "move line up" },
     { "<cr>", send_region, desc = "run code region" },
@@ -207,8 +172,8 @@ wk.add({
 
 -- visual with <leader>
 wk.add({
-  { "<leader>d", '"_d', desc = "delete without overwriting reg", mode = "v" },
-  { "<leader>p", '"_dP', desc = "replace without overwriting reg", mode = "v" },
+  { "<leader>d", '"_d', desc = "delete w/o overwriting reg", mode = "v" },
+  { "<leader>p", '"_dP', desc = "replace w/o overwriting reg", mode = "v" },
 }, { mode = "v" })
 
 -- insert mode
@@ -302,7 +267,7 @@ wk.add({
     { "<leader>od", require("otter").activate, desc = "otter [d]eactivate" },
     { "<leader>oj", insert_julia_chunk, desc = "[j]ulia code chunk" },
     { "<leader>ol", insert_lua_chunk, desc = "[l]lua code chunk" },
-    { "<leader>oo", insert_ojs_chunk, desc = "[o]bservable js code chunk" },
+    -- { "<leader>oo", insert_ojs_chunk, desc = "[o]bservable js code chunk" },
     { "<leader>op", insert_py_chunk, desc = "[p]ython code chunk" },
     { "<leader>or", insert_r_chunk, desc = "[r] code chunk" },
     { "<leader>q", group = "[q]uarto" },
