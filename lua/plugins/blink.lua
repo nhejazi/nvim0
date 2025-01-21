@@ -63,7 +63,7 @@ return {
           rlang = {
             name = "cmp_r",
             module = "blink.compat.source",
-            score_offset = 100,
+            score_offset = 90,
           },
           vimtex = {
             name = "vimtex",
@@ -78,7 +78,7 @@ return {
           pandoc_references = {
             name = "pandoc_references",
             module = "blink.compat.source",
-            score_offset = 100,
+            score_offset = 90,
           },
         },
       },
