@@ -1,7 +1,7 @@
 return {
   {
     "williamboman/mason.nvim",
-    -- add any tools you want to have installed below
+    -- add tools to be installed below (installs in a virtualenv)
     opts = {
       ensure_installed = {
         "tree-sitter-cli",
@@ -10,7 +10,8 @@ return {
         "shfmt",
         "flake8",
         "black",
-        "r-languageserver", -- disabled in .Rprofile to avoid clashing w/ cmp-r
+        "pyright",
+        "r-languageserver",
         "julia-lsp",
         "marksman",
         "texlab",

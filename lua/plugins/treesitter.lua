@@ -10,7 +10,7 @@ return {
         "javascript",
         "json",
         "julia",
-        "latex", -- requires tree-sitter-cli, auto-installed via Mason
+        "latex",
         "lua",
         "luadoc",
         "markdown",
