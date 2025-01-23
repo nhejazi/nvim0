@@ -5,18 +5,24 @@ return {
     opts = {
       ensure_installed = {
         "tree-sitter-cli",
-        "stylua",
-        "shellcheck",
-        "shfmt",
-        "flake8",
-        "black",
-        "pyright",
-        "r-languageserver",
+        -- lsp servers
+        "basedpyright",
         "julia-lsp",
+        "ltex-ls",
         "marksman",
+        "python-lsp-server",
+        "r-languageserver",
         "texlab",
-        "jupytext",
+        -- linting
+        "flake8",
         "proselint",
+        "shellcheck",
+        "vale",
+        -- formatting
+        "black",
+        "jupytext",
+        "shfmt",
+        "stylua",
       },
     },
   },
