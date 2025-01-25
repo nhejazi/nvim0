@@ -7,7 +7,11 @@ return {
         ltex = {
           settings = {
             ltex = {
+              language = "en-US",
               checkFrequency = "save",
+              disabledRules = {
+                ["en-US"] = { "WHITESPACE_RULE", "PLUS_MINUS" },
+              },
             },
           },
         },
