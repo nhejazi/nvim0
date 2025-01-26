@@ -1,14 +1,14 @@
 return {
   {
     "williamboman/mason.nvim",
-    -- add tools to be installed below (installs in a virtualenv)
+    -- add tools to be installed below (done in a virtualenv)
     opts = {
       ensure_installed = {
         "tree-sitter-cli",
         -- lsp servers
         "basedpyright",
         "julia-lsp",
-        "ltex-ls",
+        "ltex-ls", -- NOTE: ltex-ls-plus (better maintained) not yet supported
         "marksman",
         "python-lsp-server",
         "r-languageserver",
