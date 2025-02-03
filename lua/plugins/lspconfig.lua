@@ -29,8 +29,12 @@ return {
           -- see <https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#texlab>
           settings = {
             texlab = {
-              bibtexFormatter = "texlab",
+              bibtexFormatter = "latexindent",
               latexFormatter = "latexindent",
+              formatterLineLength = 79,
+              diagnostics = {
+                ignoredPatterns = { "Unused label", "Unused entry" },
+              },
             },
           },
         },
