@@ -29,8 +29,15 @@ vim.opt.tabstop = tabsize
 --vim.opt.smartcase = true
 
 -- indent
+vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.breakindent = true
+
+-- set linebreaks and marker for 80 columns
+-- vim.opt.textwidth = 80
+-- vim.opt.wrapmargin = 0
+-- vim.opt.linebreak = true
+vim.opt.colorcolumn = "80"
 
 -- Sets how neovim will display certain whitespace in the editor.
 --  See :help 'list'
@@ -43,9 +50,6 @@ vim.opt.signcolumn = "yes:1"
 
 -- how to show autocomplete menu
 vim.opt.completeopt = "menuone,noinsert"
-
--- set marker for 80 columns
-vim.opt.colorcolumn = "80"
 
 vim.cmd([[
 let g:currentmode={
