@@ -35,6 +35,9 @@ return {
           enabled = false,
         },
       },
+      fuzzy = {
+        implementation = "lua",
+      },
       sources = {
         default = {
           "lsp",
