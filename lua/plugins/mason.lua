@@ -19,6 +19,7 @@ return {
         "shellcheck",
         "vale",
         -- formatting
+        "air",
         "black",
         "jupytext",
         "shfmt",
