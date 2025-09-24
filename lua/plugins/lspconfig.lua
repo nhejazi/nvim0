@@ -40,7 +40,7 @@ return {
         },
         r_language_server = {
           -- see <https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#r_language_server>
-          cmd = { "R", "--no-echo", "-e", "languageserver::run()" },
+          cmd = { "R", "--no-echo", "--slave", "-e", "languageserver::run()" },
           filetypes = { "r", "rmd", "quarto" }, -- extend to include quarto
           settings = {
             r = {
