@@ -1,6 +1,6 @@
 return {
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     -- add tools to be installed below (done in a virtualenv)
     opts = {
       ensure_installed = {

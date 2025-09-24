@@ -3,7 +3,7 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = {
       "mason.nvim",
-      { "williamboman/mason-lspconfig.nvim", config = function() end },
+      { "mason-org/mason-lspconfig.nvim", config = function() end },
     },
     opts = function(_, opts)
       -- modify LSP servers
