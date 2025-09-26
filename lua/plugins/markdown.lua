@@ -18,6 +18,7 @@ return {
         border = "thick",
         inline_pad = 1,
       },
+      latex = { enabled = false },
       -- options to always show (never hide via local conceal behavior)
       -- anti_conceal = {
       --   ignore = {

@@ -8,7 +8,8 @@ return {
         -- lsp servers
         "basedpyright",
         "julia-lsp",
-        "ltex-ls", -- NOTE: ltex-ls-plus (better maintained) not yet supported
+        "ltex-ls",
+        "ltex-ls-plus",
         "marksman",
         "python-lsp-server",
         "r-languageserver",
@@ -22,6 +23,7 @@ return {
         "air",
         "black",
         "jupytext",
+        "markdown-oxide",
         "shfmt",
         "stylua",
       },

@@ -7,7 +7,7 @@ return {
         lua = { "stylua" },
         sh = { "shfmt" },
         python = { "black" },
-        -- r = { "air" },
+        r = { "air" },
         rmd = { "injected" },
         quarto = { "injected" },
       },

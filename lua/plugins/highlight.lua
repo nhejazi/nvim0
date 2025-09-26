@@ -9,7 +9,7 @@ return {
     "xzbdmw/colorful-menu.nvim",
     -- TODO: fix integration with blink
     enabled = false,
-    config = {
+    opts = {
       ls = {
         lua_ls = {
           -- Maybe you want to dim arguments a bit.

@@ -4,6 +4,7 @@ return {
     opts = {
       ensure_installed = {
         "bash",
+        "css",
         "csv",
         "dot",
         "html",
@@ -20,8 +21,10 @@ return {
         "r",
         "rnoweb",
         "regex",
+        "scss",
         "toml",
         "typescript",
+        "typst",
         "vim",
         "vimdoc",
         "yaml",
