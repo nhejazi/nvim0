@@ -14,6 +14,7 @@ return {
         "python-lsp-server",
         "r-languageserver",
         "texlab",
+        "fish-lsp",
         -- linting
         "flake8",
         "proselint",
@@ -22,10 +23,13 @@ return {
         -- formatting
         "air",
         "black",
+        "isort",
         "jupytext",
         "markdown-oxide",
+        "prettier",
         "shfmt",
         "stylua",
+        "yamlfmt",
       },
     },
   },
