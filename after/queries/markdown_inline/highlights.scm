@@ -5,9 +5,8 @@
 ] @nospell
 
 (strikethrough
-(emphasis_delimiter) 
-(strikethrough 
-  (emphasis_delimiter) 
-  (emphasis_delimiter)) 
-(emphasis_delimiter))@markup.doublestrikethrough 
-
+(emphasis_delimiter)
+(strikethrough
+  (emphasis_delimiter)
+  (emphasis_delimiter))
+(emphasis_delimiter))@markup.doublestrikethrough

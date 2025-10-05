@@ -11,30 +11,32 @@ return {
   -- REPL support for R
   {
     "R-nvim/R.nvim",
-    -- recommended: pin to the latest minor version
-    version = "~0.1.0",
+    lazy = false,
     opts = {
       hook = {
         on_filetype = function()
-          vim.api.nvim_buf_set_keymap(0, "n", "<Enter>", "<Plug>RDSendLine", {})
-          vim.api.nvim_buf_set_keymap(0, "v", "<Enter>", "<Plug>RSendSelection", {})
+          vim.api.nvim_buf_set_keymap(0, "n", "<Enter>", "<Plug>RDSendLine", { noremap = true })
+          vim.api.nvim_buf_set_keymap(0, "v", "<Enter>", "<Plug>RSendSelection", { noremap = true })
+          vim.api.nvim_buf_set_keymap(0, "i", "_", "<Plug>RInsertAssign", { noremap = true })
         end,
       },
-      -- R_app = "radian",
-      -- bracketed_paste = true,
       R_cmd = "R",
       R_args = { "--quiet", "--no-save" },
-      rmdchunk = "``",
-      rconsole_width = 70,
+      -- R_app = "radian", -- radian repl and renv together cause segfault
+      -- bracketed_paste = true, -- need to pass code blocks to for radian repl
       min_editor_width = 81,
-      assignment_keymap = "_",
-      pdfviewer = "",
-      open_pdf = "open",
+      rconsole_width = 70,
+      pdfviewer = "", -- default pdf viewer
+      open_pdf = "open", -- keep focus on terminal when opening pdf
       disable_cmds = {
         "RClearConsole",
         "RCustomStart",
         "RSPlot",
         "RSaveClose",
+      },
+      quarto_chunk_hl = {
+        highlight = true,
+        yaml_hl = true,
       },
     },
   },

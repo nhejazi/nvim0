@@ -47,4 +47,3 @@
 
 ; number
 (float) @number.inner
-
