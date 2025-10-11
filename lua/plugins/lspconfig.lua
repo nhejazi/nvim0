@@ -5,12 +5,24 @@ return {
       "mason.nvim",
       { "mason-org/mason-lspconfig.nvim", config = function() end },
     },
-    opts = function(_, opts)
+    opts = {
       -- modify LSP servers
-      opts.servers = vim.tbl_deep_extend("force", opts.servers or {}, {
+      servers = {
         -- LaTeX spell checker
-        ltex = {
-          -- see <https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#ltex>
+        -- ltex = {
+        --   -- see <https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#ltex>
+        --   settings = {
+        --     ltex = {
+        --       language = "en-US",
+        --       checkFrequency = "save",
+        --       disabledRules = {
+        --         ["en-US"] = { "WHITESPACE_RULE", "PLUS_MINUS" },
+        --       },
+        --     },
+        --   },
+        -- },
+        ltex_plus = {
+          -- see <https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#ltex_plus>
           settings = {
             ltex = {
               language = "en-US",
@@ -25,11 +37,14 @@ return {
         -- markdown LSP (with Quarto support)
         marksman = {
           -- see <https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#marksman>
+          cmd = { "marksman", "server" },
           filetypes = { "markdown", "quarto" }, -- extend to include quarto
-          root_dir = function(fname)
-            local util = require("lspconfig.util")
-            return util.root_pattern(".marksman.toml", "_quarto.yml", ".git")(fname)
-          end,
+        },
+
+        -- PKM markdown LSP (like obsidian)
+        markdown_oxide = {
+          cmd = { "markdown-oxide" },
+          filetypes = { "markdown" },
         },
 
         -- LaTeX LSP
@@ -110,9 +125,7 @@ return {
 
         -- yaml LSP
         yamlls = {},
-      })
-
-      return opts
-    end,
+      },
+    },
   },
 }

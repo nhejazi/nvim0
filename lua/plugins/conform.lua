@@ -3,8 +3,8 @@ return {
   {
     "stevearc/conform.nvim",
     event = { "BufReadPre", "BufNewFile" },
-    opts = function(_, opts)
-      opts.formatters_by_ft = vim.tbl_extend("force", opts.formatters_by_ft or {}, {
+    opts = {
+      formatters_by_ft = {
         lua = { "stylua" },
         sh = { "shfmt" },
         python = { "isort", "black" },
@@ -13,9 +13,9 @@ return {
         rmd = { "prettier", "injected" },
         quarto = { "prettier", "injected" },
         yaml = { "yamlfmt" },
-      })
+      },
 
-      opts.formatters = vim.tbl_extend("force", opts.formatters or {}, {
+      formatters = {
         prettier = {
           options = {
             ext_parsers = {
@@ -51,9 +51,7 @@ return {
             -- lang_to_formatters = {},
           },
         },
-      })
-
-      return opts
-    end,
+      },
+    },
   },
 }

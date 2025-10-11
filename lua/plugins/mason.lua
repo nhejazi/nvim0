@@ -8,9 +8,10 @@ return {
         -- lsp servers
         "basedpyright",
         "julia-lsp",
-        "ltex-ls",
+        -- "ltex-ls",
         "ltex-ls-plus",
         "marksman",
+        "markdown-oxide",
         "python-lsp-server",
         "r-languageserver",
         "texlab",
