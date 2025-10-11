@@ -8,9 +8,9 @@ return {
     opts = function(_, opts)
       -- modify LSP servers
       opts.servers = vim.tbl_deep_extend("force", opts.servers or {}, {
+        -- LaTeX spell checker
         ltex = {
           -- see <https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#ltex>
-          -- NOTE: mason doesn't support ltex-ls-plus, which is better maintained
           settings = {
             ltex = {
               language = "en-US",
@@ -21,10 +21,18 @@ return {
             },
           },
         },
+
+        -- markdown LSP (with Quarto support)
         marksman = {
           -- see <https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#marksman>
           filetypes = { "markdown", "quarto" }, -- extend to include quarto
+          root_dir = function(fname)
+            local util = require("lspconfig.util")
+            return util.root_pattern(".marksman.toml", "_quarto.yml", ".git")(fname)
+          end,
         },
+
+        -- LaTeX LSP
         texlab = {
           -- see <https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#texlab>
           settings = {
@@ -38,6 +46,8 @@ return {
             },
           },
         },
+
+        -- R LSP (with Quarto support)
         r_language_server = {
           -- see <https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#r_language_server>
           cmd = { "R", "--no-echo", "--slave", "-e", "languageserver::run()" },
@@ -47,10 +57,13 @@ return {
               lsp = {
                 debug = false,
                 diagnostics = true,
+                rich_documentation = false,
               },
             },
           },
         },
+
+        -- Python LSP (main)
         basedpyright = {
           -- see <https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#basedpyright>
           settings = {
@@ -63,6 +76,8 @@ return {
             },
           },
         },
+
+        -- Python LSP (alternatives)
         pylsp = {
           -- see <https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#pylsp>
           settings = {
@@ -89,9 +104,12 @@ return {
             },
           },
         },
-        julials = {
-          -- see <https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#julials>
-        },
+
+        -- Julia LSP
+        julials = {},
+
+        -- yaml LSP
+        yamlls = {},
       })
 
       return opts
