@@ -10,14 +10,12 @@ return {
   {
     "saghen/blink.cmp",
     dependencies = {
-      {
-        "saghen/blink.compat",
-        "giuxtaposition/blink-cmp-copilot",
-        "jmbuhr/cmp-pandoc-references",
-        "kdheepak/cmp-latex-symbols",
-        "micangl/cmp-vimtex",
-        "R-nvim/cmp-r",
-      },
+      "saghen/blink.compat",
+      "giuxtaposition/blink-cmp-copilot",
+      "jmbuhr/cmp-pandoc-references",
+      "kdheepak/cmp-latex-symbols",
+      "micangl/cmp-vimtex",
+      "R-nvim/cmp-r",
     },
     opts = {
       keymap = {
@@ -46,7 +44,6 @@ return {
           "buffer",
           "copilot",
           "rlang",
-          -- "markdown",
           "pandoc_references",
           "latex_symbols",
           "vimtex",
@@ -58,11 +55,6 @@ return {
             score_offset = 100,
             async = true,
           },
-          -- markdown = {
-          --   name = "RenderMarkdown",
-          --   module = "render-markdown.integ.blink",
-          --   score_offset = 90,
-          -- },
           rlang = {
             name = "cmp_r",
             module = "blink.compat.source",

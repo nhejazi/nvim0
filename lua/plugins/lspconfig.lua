@@ -7,7 +7,7 @@ return {
     },
     opts = function(_, opts)
       -- modify LSP servers
-      opts.servers = vim.tbl_deep_extend("force", opts.servers, {
+      opts.servers = vim.tbl_deep_extend("force", opts.servers or {}, {
         ltex = {
           -- see <https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#ltex>
           -- NOTE: mason doesn't support ltex-ls-plus, which is better maintained
@@ -93,6 +93,8 @@ return {
           -- see <https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#julials>
         },
       })
+
+      return opts
     end,
   },
 }

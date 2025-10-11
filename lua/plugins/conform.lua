@@ -3,8 +3,8 @@ return {
   {
     "stevearc/conform.nvim",
     event = { "BufReadPre", "BufNewFile" },
-    opts = {
-      formatters_by_ft = {
+    opts = function(_, opts)
+      opts.formatters_by_ft = vim.tbl_extend("force", opts.formatters_by_ft or {}, {
         lua = { "stylua" },
         sh = { "shfmt" },
         python = { "isort", "black" },
@@ -13,8 +13,9 @@ return {
         rmd = { "prettier", "injected" },
         quarto = { "prettier", "injected" },
         yaml = { "yamlfmt" },
-      },
-      formatters = {
+      })
+
+      opts.formatters = vim.tbl_extend("force", opts.formatters or {}, {
         prettier = {
           options = {
             ext_parsers = {
@@ -50,14 +51,9 @@ return {
             -- lang_to_formatters = {},
           },
         },
-      },
-      -- NOTE: LazyVim recommends disabling
-      --
-      -- format_on_save = {
-      --   lsp_fallback = true,
-      --   async = false,
-      --   timeout_ms = 500,
-      -- },
-    },
+      })
+
+      return opts
+    end,
   },
 }

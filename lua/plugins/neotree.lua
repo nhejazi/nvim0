@@ -1,6 +1,11 @@
 return {
   {
     "nvim-neo-tree/neo-tree.nvim",
+    cmd = "Neotree",
+    keys = {
+      { "<leader>e", "<cmd>Neotree toggle<cr>", desc = "Explorer" },
+      { "<leader>E", "<cmd>Neotree focus<cr>", desc = "Focus Explorer" },
+    },
     opts = {
       close_if_last_window = true, -- default is false
       window = {

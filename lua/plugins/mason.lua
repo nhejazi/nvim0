@@ -14,7 +14,7 @@ return {
         "python-lsp-server",
         "r-languageserver",
         "texlab",
-        "fish-lsp",
+        "yaml-language-server",
         -- linting
         "flake8",
         "proselint",

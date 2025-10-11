@@ -3,6 +3,7 @@ return {
   {
     "zbirenbaum/copilot.lua",
     enabled = true,
+    event = "InsertEnter",
     opts = {
       panel = {
         enabled = false,
@@ -48,7 +49,6 @@ return {
     },
   },
 
-  -- integration with blink
   {
     "giuxtaposition/blink-cmp-copilot",
   },

@@ -2,7 +2,7 @@ return {
   -- CSV viewer
   {
     "hat0uma/csvview.nvim",
-    lazy = true,
+    cmd = { "CsvViewEnable", "CsvViewDisable", "CsvViewToggle" },
     ft = { "csv" },
     opts = {
       view = {

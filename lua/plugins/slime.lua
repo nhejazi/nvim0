@@ -1,9 +1,9 @@
 return {
   -- send code from python/R/qmd files to a REPL, e.g., ipython, R, shell
-  -- adapted from
   {
     "jpalardy/vim-slime",
     enabled = true,
+    lazy = false,
     init = function()
       vim.b["quarto_is_python_chunk"] = false
       Quarto_is_in_python_chunk = function()
@@ -29,6 +29,8 @@ return {
       vim.g.slime_target = "neovim"
       vim.g.slime_no_mappings = true
       vim.g.slime_python_ipython = 1
+      vim.g.slime_bracketed_paste = 1
+      vim.g.slime_preserve_curpos = 0
     end,
     config = function()
       vim.g.slime_input_pid = false
@@ -38,7 +40,11 @@ return {
 
       local function mark_terminal()
         local job_id = vim.b.terminal_job_id
-        vim.print("job_id: " .. job_id)
+        if job_id then
+          vim.notify("Terminal marked: job_id = " .. job_id, vim.log.levels.INFO)
+        else
+          vim.notify("Not in a terminal buffer", vim.log.levels.WARN)
+        end
       end
 
       local function set_terminal()
@@ -47,5 +53,10 @@ return {
       vim.keymap.set("n", "<leader>cm", mark_terminal, { desc = "[m]ark terminal" })
       vim.keymap.set("n", "<leader>cs", set_terminal, { desc = "[s]et terminal" })
     end,
+    keys = {
+      { "<c-cr>", mode = { "n", "i" }, desc = "Run Code Cell" },
+      { "<s-cr>", mode = { "n", "i" }, desc = "Run Code Cell" },
+      { "<cr>", mode = "v", desc = "Run Selection" },
+    },
   },
 }
