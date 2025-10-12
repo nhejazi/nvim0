@@ -38,7 +38,7 @@ return {
         marksman = {
           -- see <https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#marksman>
           cmd = { "marksman", "server" },
-          filetypes = { "markdown", "quarto" }, -- extend to include quarto
+          filetypes = { "quarto" }, -- extend to include quarto
         },
 
         -- PKM markdown LSP (like obsidian)
