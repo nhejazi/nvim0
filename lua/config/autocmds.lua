@@ -96,3 +96,151 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- end, opts)
   end,
 })
+
+-- markdown-oxide custom commands and features
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("MarkdownOxideConfig", { clear = true }),
+  callback = function(ev)
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+
+    -- Only run for markdown_oxide LSP
+    if not client or client.name ~= "markdown_oxide" then
+      return
+    end
+
+    local bufnr = ev.buf
+
+    -- Daily Notes Commands
+    -- :Daily [natural language date]
+    -- Examples: :Daily, :Daily yesterday, :Daily next monday, :Daily 2024-01-15
+    vim.api.nvim_create_user_command("Daily", function(args)
+      local input = args.args
+      client:exec_cmd({
+        title = "Jump to daily note",
+        command = "jump",
+        arguments = { input },
+      })
+    end, { desc = "Open daily note with natural language date", nargs = "*" })
+
+    -- :Today - Quick access to today's note
+    vim.api.nvim_create_user_command("Today", function()
+      client:exec_cmd({
+        title = "Jump to today",
+        command = "jump",
+        arguments = { "today" },
+      })
+    end, { desc = "Open today's note" })
+
+    -- :Yesterday - quick access to yesterday's note
+    vim.api.nvim_create_user_command("Yesterday", function()
+      client:exec_cmd({
+        title = "Jump to yesterday",
+        command = "jump",
+        arguments = { "yesterday" },
+      })
+    end, { desc = "Open yesterday's note" })
+
+    -- :Tomorrow - quick access to tomorrow's note
+    vim.api.nvim_create_user_command("Tomorrow", function()
+      client:exec_cmd({
+        title = "Jump to tomorrow",
+        command = "jump",
+        arguments = { "tomorrow" },
+      })
+    end, { desc = "Open tomorrow's note" })
+
+    -- Buffer-local Keymaps for Daily Notes
+    local opts = { buffer = bufnr, silent = true }
+
+    -- <leader>nt - Today's note
+    vim.keymap.set("n", "<leader>nt", function()
+      client:exec_cmd({
+        title = "Jump to today",
+        command = "jump",
+        arguments = { "today" },
+      })
+    end, vim.tbl_extend("force", opts, { desc = "Open today's note" }))
+
+    -- <leader>ny - Yesterday's note
+    vim.keymap.set("n", "<leader>ny", function()
+      client:exec_cmd({
+        title = "Jump to yesterday",
+        command = "jump",
+        arguments = { "yesterday" },
+      })
+    end, vim.tbl_extend("force", opts, { desc = "Open yesterday's note" }))
+
+    -- <leader>nm - Tomorrow's note
+    vim.keymap.set("n", "<leader>nm", function()
+      client:exec_cmd({
+        title = "Jump to tomorrow",
+        command = "jump",
+        arguments = { "tomorrow" },
+      })
+    end, vim.tbl_extend("force", opts, { desc = "Open tomorrow's note" }))
+
+    -- Code Lens Support (Reference Counts)
+    local function check_codelens_support()
+      local clients = vim.lsp.get_clients({ bufnr = bufnr })
+      for _, c in ipairs(clients) do
+        if c.server_capabilities.codeLensProvider then
+          return true
+        end
+      end
+      return false
+    end
+
+    -- Refresh code lens on various events
+    vim.api.nvim_create_autocmd({ "TextChanged", "InsertLeave", "CursorHold", "BufEnter" }, {
+      buffer = bufnr,
+      group = vim.api.nvim_create_augroup("MarkdownOxideCodeLens", { clear = false }),
+      callback = function()
+        if check_codelens_support() then
+          vim.lsp.codelens.refresh({ bufnr = bufnr })
+        end
+      end,
+    })
+
+    -- Initial code lens refresh
+    vim.schedule(function()
+      if check_codelens_support() then
+        vim.lsp.codelens.refresh({ bufnr = bufnr })
+      end
+    end)
+  end,
+})
+
+-- Additional PKM Keymaps (Available in all markdown files)
+vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("MarkdownPKMKeymaps", { clear = true }),
+  pattern = "markdown",
+  callback = function()
+    local opts = { buffer = true, silent = true }
+
+    -- <leader>nl - Create link from word under cursor
+    vim.keymap.set("n", "<leader>nl", function()
+      local word = vim.fn.expand("<cword>")
+      if word and word ~= "" then
+        vim.cmd("normal! ciw[[" .. word .. "]]")
+        vim.cmd("normal! F[") -- Move cursor back into the link
+      end
+    end, vim.tbl_extend("force", opts, { desc = "Create wiki-link from word" }))
+
+    -- <leader>nb - Show backlinks (references)
+    vim.keymap.set(
+      "n",
+      "<leader>nb",
+      vim.lsp.buf.references,
+      vim.tbl_extend("force", opts, { desc = "Show backlinks" })
+    )
+
+    -- <leader>nv - Open link in vertical split
+    vim.keymap.set("n", "<leader>nv", function()
+      vim.cmd("vsplit")
+      vim.lsp.buf.definition()
+    end, vim.tbl_extend("force", opts, { desc = "Open link in split" }))
+
+    -- <leader>np - Preview link without jumping
+    vim.keymap.set("n", "<leader>np", vim.lsp.buf.hover, vim.tbl_extend("force", opts, { desc = "Preview link" }))
+  end,
+})
