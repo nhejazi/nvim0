@@ -8,9 +8,15 @@ return {
     opts = {
       -- modify LSP servers
       servers = {
+        html = {
+          init_options = {
+            provideFormatter = false,
+          },
+        },
         -- LaTeX spell checker
         -- ltex = {
         --   -- see <https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#ltex>
+        -- filetypes = { "tex", "latex", "markdown", "md", "quarto", "rmd", "rnoweb" },
         --   settings = {
         --     ltex = {
         --       language = "en-US",
@@ -23,6 +29,7 @@ return {
         -- },
         ltex_plus = {
           -- see <https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#ltex_plus>
+          filetypes = { "bib", "tex", "latex", "markdown", "md", "quarto", "rmd", "rnoweb", "text", "txt" },
           settings = {
             ltex = {
               language = "en-US",
@@ -30,6 +37,7 @@ return {
               disabledRules = {
                 ["en-US"] = { "WHITESPACE_RULE", "PLUS_MINUS" },
               },
+              enabled = { "bib", "tex", "latex", "markdown", "md", "quarto", "rmd", "rnoweb", "text", "txt" },
             },
           },
         },
@@ -67,6 +75,10 @@ return {
           -- see <https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#r_language_server>
           cmd = { "R", "--no-echo", "--slave", "-e", "languageserver::run()" },
           filetypes = { "r", "rmd", "quarto" }, -- extend to include quarto
+          capabilities = {
+            documentFormattingProvider = false, -- disable R LSP formatting
+            documentRangeFormattingProvider = false,
+          },
           settings = {
             r = {
               lsp = {

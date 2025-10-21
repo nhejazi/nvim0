@@ -10,11 +10,11 @@ return {
         python = { "isort", "black" },
         r = { "air" },
         markdown = { "prettier" },
-        rmd = { "prettier", "injected" },
-        quarto = { "prettier", "injected" },
+        rmd = { "injected" },
+        quarto = { "injected" },
         yaml = { "yamlfmt" },
+        html = { "prettier" },
       },
-
       formatters = {
         prettier = {
           options = {

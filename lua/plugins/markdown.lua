@@ -19,14 +19,17 @@ return {
         inline_pad = 1,
       },
       latex = { enabled = false },
-      -- options to always show (never hide via local conceal behavior)
-      -- anti_conceal = {
-      --   ignore = {
-      --     code_background = true,
-      --     code_border = true,
-      --     link = true,
-      --   },
-      -- },
+      yaml = { enabled = false },
+      heading = {
+        enabled = true,
+        sign = true,
+        icons = { "󰲡 ", "󰲣 ", "󰲥 ", "󰲧 ", "󰲩 ", "󰲫 " },
+      },
+      -- Make rendering more context-aware
+      render_modes = { "n", "c" }, -- Only render in normal and command modes, not insert
+      anti_conceal = {
+        enabled = true, -- Show real text when cursor is on the line
+      },
     },
   },
 }
