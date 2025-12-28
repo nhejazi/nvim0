@@ -1,0 +1,5 @@
+return {
+  {
+    "andrewferrier/wrapping.nvim",
+  },
+}

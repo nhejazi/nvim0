@@ -28,20 +28,14 @@ vim.opt.tabstop = tabsize
 --vim.opt.ignorecase = true
 --vim.opt.smartcase = true
 
--- indent
+-- indent and line-wrapping
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.breakindent = true
-
--- set linebreaks and marker for 80 columns
--- vim.opt.textwidth = 80
--- vim.opt.wrapmargin = 0
--- vim.opt.linebreak = true
 vim.opt.colorcolumn = "80"
 
--- Sets how neovim will display certain whitespace in the editor.
---  See :help 'list'
---  and :help 'listchars'
+-- sets how neovim will display certain whitespace in the editor.
+-- see :help 'list' and :help 'listchars'
 vim.opt.list = true
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
@@ -91,13 +85,6 @@ vim.diagnostic.config({
   underline = true,
   signs = true,
 })
-
--- add new filetypes
---vim.filetype.add {
---extension = {
---ojs = "javascript",
---},
---}
 
 -- additional builtin vim packages
 -- filter quickfix list with Cfilter

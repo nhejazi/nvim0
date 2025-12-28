@@ -1,13 +1,4 @@
 return {
-  -- R auto-completion engine
-  {
-    "R-nvim/cmp-r",
-    opts = {
-      doc_width = 70,
-      trigger_characters = { " ", ":", "(", '"', "$" },
-    },
-  },
-
   -- REPL support for R
   {
     "R-nvim/R.nvim",

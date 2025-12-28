@@ -15,7 +15,6 @@ return {
       "jmbuhr/cmp-pandoc-references",
       "kdheepak/cmp-latex-symbols",
       "micangl/cmp-vimtex",
-      "R-nvim/cmp-r",
     },
     opts = {
       keymap = {
@@ -43,7 +42,6 @@ return {
           "snippets",
           "buffer",
           "copilot",
-          "rlang",
           "pandoc_references",
           "latex_symbols",
           "vimtex",
@@ -54,11 +52,6 @@ return {
             module = "blink-cmp-copilot",
             score_offset = 100,
             async = true,
-          },
-          rlang = {
-            name = "cmp_r",
-            module = "blink.compat.source",
-            score_offset = 90,
           },
           vimtex = {
             name = "vimtex",

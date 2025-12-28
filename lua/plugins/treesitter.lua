@@ -32,6 +32,10 @@ return {
       highlight = {
         enable = true,
       },
+      indent = {
+        --- turn off for debugging
+        enable = true,
+      },
     },
   },
 }
