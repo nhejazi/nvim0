@@ -1,12 +1,12 @@
 return {
   {
     "folke/noice.nvim",
-    enabled = false,
+    enabled = true,
     event = "VeryLazy",
     opts = {
       cmdline = {
         enabled = true,
-        view = "cmdline",
+        view = "cmdline_popup", -- just "cmdline" for classic behavior
       },
     },
   },
