@@ -25,7 +25,7 @@ return {
         "RSPlot",
         "RSaveClose",
       },
-      quarto_chunk_hl = {
+      chunk_hl = {
         highlight = true,
         yaml_hl = true,
       },
