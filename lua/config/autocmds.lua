@@ -55,7 +55,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     -- Enable inlay hints if supported (Neovim 0.10+)
     if client and client:supports_method("textDocument/inlayHint") then
-      vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+      vim.defer_fn(function()
+        if vim.api.nvim_buf_is_valid(bufnr) then
+          vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+        end
+      end, 500)
     end
 
     -- Set up document highlighting
