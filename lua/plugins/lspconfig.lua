@@ -104,33 +104,8 @@ return {
           },
         },
 
-        -- Python LSP (alternatives)
-        pylsp = {
-          -- see <https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#pylsp>
-          settings = {
-            pylsp = {
-              -- see <https://github.com/python-lsp/python-lsp-server/blob/develop/CONFIGURATION.md>
-              configurationSources = { "flake8" },
-              plugins = {
-                autopep8 = { enabled = false },
-                flake8 = {
-                  enabled = false,
-                  -- see <https://www.flake8rules.com/> for PEP codes
-                  -- ignore = { "E501", "E231" },
-                  maxLineLength = 80,
-                },
-                mccabe = { enabled = true },
-                pycodestyle = {
-                  enabled = false,
-                  -- ignore = { "E501", "E231" },
-                  maxLineLength = 80,
-                },
-                pyflakes = { enabled = false },
-                yapf = { enabled = true },
-              },
-            },
-          },
-        },
+        -- Python LSP (disabled in favor of basedpyright above)
+        pylsp = { enabled = false },
 
         -- Julia LSP
         julials = {},
