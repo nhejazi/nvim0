@@ -1,4 +1,15 @@
 return {
+  -- remove stylua/shfmt from none-ls to avoid double-formatting with conform
+  {
+    "nvimtools/none-ls.nvim",
+    optional = true,
+    opts = function(_, opts)
+      opts.sources = vim.tbl_filter(function(source)
+        return source.name ~= "stylua" and source.name ~= "shfmt"
+      end, opts.sources or {})
+    end,
+  },
+
   -- lightweight code formatting (used by LazyVim as default)
   {
     "stevearc/conform.nvim",

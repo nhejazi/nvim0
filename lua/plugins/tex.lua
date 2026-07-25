@@ -3,8 +3,10 @@ return {
   {
     "lervag/vimtex",
     lazy = false,
-    opts = {
-      vimtex_view_method = "general",
-    },
+    config = function()
+      vim.g.vimtex_mappings_disable = { ["n"] = { "K" } }
+      vim.g.vimtex_quickfix_method = vim.fn.executable("pplatex") == 1 and "pplatex" or "latexlog"
+      vim.g.vimtex_view_method = "general"
+    end,
   },
 }

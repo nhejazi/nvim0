@@ -109,9 +109,6 @@ return {
 
         -- Julia LSP
         julials = {},
-
-        -- yaml LSP
-        yamlls = {},
       },
     },
   },

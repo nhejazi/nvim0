@@ -8,8 +8,8 @@ vim.wo.breakindent = true
 vim.wo.showbreak = "|"
 
 vim.api.nvim_create_autocmd("BufEnter", {
-  desc = "Automatically pull when entering a buffer in my ~/notes/ directory",
-  pattern = vim.fn.expand("~") .. "/notes/*.md" .. "," .. vim.fn.expand("~") .. "/notes/*.qmd",
+  desc = "Automatically pull when entering a buffer in my ~/git/braindump/ directory",
+  pattern = vim.fn.expand("~") .. "/git/braindump/**/*.md" .. "," .. vim.fn.expand("~") .. "/git/braindump/**/*.qmd",
   group = vim.api.nvim_create_augroup("git_pull", { clear = true }),
   callback = function(ev)
     local file = ev.file
@@ -30,8 +30,8 @@ vim.api.nvim_create_autocmd("BufEnter", {
 })
 
 vim.api.nvim_create_autocmd("BufWritePost", {
-  desc = "Automatically push git when saving in my ~/notes/ directory",
-  pattern = vim.fn.expand("~") .. "/notes/*.md" .. "," .. vim.fn.expand("~") .. "/notes/*.qmd",
+  desc = "Automatically push git when saving in my ~/git/braindump/ directory",
+  pattern = vim.fn.expand("~") .. "/git/braindump/**/*.md" .. "," .. vim.fn.expand("~") .. "/git/braindump/**/*.qmd",
   group = vim.api.nvim_create_augroup("git_push", { clear = true }),
   callback = function(ev)
     local file = ev.file

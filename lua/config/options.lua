@@ -2,6 +2,9 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 
+-- pin python provider to avoid pyenv search on every startup
+vim.g.python3_host_prog = "/Users/nih914/.pyenv/versions/base_env/bin/python"
+
 -- more opinionated
 vim.opt.relativenumber = false -- hide relative linenumbers
 vim.opt.signcolumn = "number"
