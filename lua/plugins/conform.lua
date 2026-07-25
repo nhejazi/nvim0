@@ -23,7 +23,6 @@ return {
         markdown = { "prettier" },
         rmd = { "injected" },
         quarto = { "injected" },
-        yaml = { "yamlfmt" },
         html = { "prettier" },
       },
       formatters = {
