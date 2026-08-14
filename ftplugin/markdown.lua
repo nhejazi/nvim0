@@ -12,41 +12,43 @@ vim.api.nvim_create_autocmd("BufEnter", {
   pattern = vim.fn.expand("~") .. "/git/braindump/**/*.md" .. "," .. vim.fn.expand("~") .. "/git/braindump/**/*.qmd",
   group = vim.api.nvim_create_augroup("git_pull", { clear = true }),
   callback = function(ev)
-    local file = ev.file
+    -- local file = ev.file
     vim.fn.jobstart("git pull", {
       on_exit = function()
-        vim.fn.jobstart("git add " .. file, {
-          on_exit = function()
-            vim.fn.jobstart('git commit -m "sync"', {
-              on_exit = function()
-                print("git pulled")
-              end,
-            })
-          end,
-        })
+        -- vim.fn.jobstart("git add " .. file, {
+        --   on_exit = function()
+        --     vim.fn.jobstart('git commit -m "sync"', {
+        --       on_exit = function()
+        --         print("git pulled")
+        --       end,
+        --     })
+        --   end,
+        -- })
+        print("git pulled")
       end,
     })
   end,
 })
 
-vim.api.nvim_create_autocmd("BufWritePost", {
-  desc = "Automatically push git when saving in my ~/git/braindump/ directory",
-  pattern = vim.fn.expand("~") .. "/git/braindump/**/*.md" .. "," .. vim.fn.expand("~") .. "/git/braindump/**/*.qmd",
-  group = vim.api.nvim_create_augroup("git_push", { clear = true }),
-  callback = function(ev)
-    local file = ev.file
-    vim.fn.jobstart("git add " .. file, {
-      on_exit = function()
-        vim.fn.jobstart('git commit -m "sync"', {
-          on_exit = function()
-            vim.fn.jobstart("git push", {
-              on_exit = function()
-                print("git pushed")
-              end,
-            })
-          end,
-        })
-      end,
-    })
-  end,
-})
+-- auto-commit/push-on-save disabled 2026-08-14 (commits/pushes now manual)
+-- vim.api.nvim_create_autocmd("BufWritePost", {
+--   desc = "Automatically push git when saving in my ~/git/braindump/ directory",
+--   pattern = vim.fn.expand("~") .. "/git/braindump/**/*.md" .. "," .. vim.fn.expand("~") .. "/git/braindump/**/*.qmd",
+--   group = vim.api.nvim_create_augroup("git_push", { clear = true }),
+--   callback = function(ev)
+--     local file = ev.file
+--     vim.fn.jobstart("git add " .. file, {
+--       on_exit = function()
+--         vim.fn.jobstart('git commit -m "sync"', {
+--           on_exit = function()
+--             vim.fn.jobstart("git push", {
+--               on_exit = function()
+--                 print("git pushed")
+--               end,
+--             })
+--           end,
+--         })
+--       end,
+--     })
+--   end,
+-- })
